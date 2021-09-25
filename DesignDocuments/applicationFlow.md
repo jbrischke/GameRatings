@@ -26,16 +26,16 @@
 1. Servlet uses the gamesReport dao to select reports according to criteria
 1. Dao performs select and creates report objects from results.
 1. Dao returns list of report matching criteria to servlet.
-1. Servlet sends list back to trail reports jsp.
-1. Trail reports jsp displays the reports.
+1. Servlet sends list back to game reports jsp.
+1. Game reports jsp displays the reports.
 1. Consider paging results so page does not get super long and too much data
    is sent.
 
 ### View Game
 
-1. Page sends a request to view trail servlet along with criteria
-   (all, region, name, etc).
-1. Servlet uses the trail dao to select trails according to criteria
+1. Page sends a request to view game servlet along with criteria
+   (all, name, release date).
+1. Servlet uses the report dao to select trails according to criteria
 1. Dao performs select and creates game objects from results.
 1. Dao returns list of games matching criteria to servlet.
 1. Servlet sends list back to gameReports  jsp.
@@ -45,6 +45,8 @@
 
 1. Static page - html
 1. Displays admin contacts by email
+1. Displays login/signup
+1. Allows user to search for any game
 
 ### Add Game Report
 1. Option only available to logged in users with proper role

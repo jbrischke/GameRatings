@@ -23,8 +23,14 @@ CREATE TABLE role (
 
 CREATE TABLE report (
                       reportId int,
-                      description varchar (255),
-
+                      timePlayed int,
+                      optionalOpinion varchar (255),
 );
 
-
+CREATE TABLE game (
+                        gameId int,
+                        name varchar(255),
+                        releaseDate date,
+                        generalDescription varchar(255),
+                        cost int,
+);

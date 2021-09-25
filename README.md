@@ -35,7 +35,7 @@
 * [User Stories](DesignDocuments/userStories.md)
 * [Tasks](DesignDocuments/tasks.md)
 * [Application Flow](DesignDocuments/applicationFlow.md)
-* [Database Design](DesignDocuments/databaseDiagram.md)
+* [Database Design](DesignDocuments/data.sql)
 
 ## [Project Plan](ProjectPlan.md)
 
