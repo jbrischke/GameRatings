@@ -10,7 +10,7 @@ I want the ability to sign in with an existing account so that i can submit repo
 
 ### Find Reports
 
-I want the ability to type in a specific name any game so that I can view any submitted reports
+I want the ability to type in a specific name of any game so that I can view any submitted reports on that particular game.
 
 ### View Games Report
 
@@ -18,19 +18,15 @@ In the view I want the games picture to be displayed and a Bar rating to the sid
 
 ### View Game
 
-I would like to beable to search by name, and a few of the rating criterias as search options.
+I would like to be able to search by name, and a few of the rating criterias as search options.
 
 ### About
 
-As a user I want to beable to view a nicely written homepage that describes the sites and has a contact to the admin for any concerns.
+As a user I want to beable to view a nicely written homepage that describes the sites purpose and has a contact to the admin for any concerns.
 
 ### Add Game Report
 
 As a registered user I want to be able to add in any report for any game that I have played so that it is viewable for anyone 
-
-### Sign In
-
-As a registered user I want to log in so that I can add or edit reports.*
 
 ### Find Game
 
@@ -38,27 +34,11 @@ As any user I want to be able to find Games by name or search criteria so that I
 
 ### View Game Report
 
-As any user, I want to be able to read a Game report for a given trail so that I can check out the experience of that game im looking at.*
-
-### View Game
-
-As any user, I want to be able to search for Game by name or Rating criterias so that I could choose an appropriate Game to view.*
-
-### View Snow Depth
-
-As any user, I want to be able to view the current snow depth near any trail.*
-
-### About
-
-As a user I want to find out more information about this site so that I can make donations or contact the admin.*
-
-### Add Game Report
-
-As a registered user, I want to be able to add Game reports for a Game so that others will know the current conditions.*
+As any user, I want to be able to read a Game report for a given game so that I can check out the experience of that game im looking at.*
 
 ### Add Game
 
-As a registered user, I want to be able to add a new Game so that others can learn about the Game and add Game reports for it.*
+As a registered user and admin, I want to be able to add a new Game so that others can learn about the Game and add Game reports for it.*
 
 ### Admin Edit Game
 

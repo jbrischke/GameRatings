@@ -1,9 +1,9 @@
 
-#Josh Brischke Individual Project
+# Josh Brischke Individual Project
 
-#Problem Statement
+# Problem Statement
 
-##For the last 20 years I have been around gaming and played many different types of games, one thing I have noticed is how inaccurate most company reviews are because they are either bought, favored or flooded. My goal is to create a site that allow users to logon and allow users to rate their own experience that are recorded and shown publically.
+## For the last 20 years I have been around gaming and played many different types of games, one thing I have noticed is how inaccurate most company reviews are because they are either bought, favored or flooded. My goal is to create a site that allow users to logon and allow users to rate their own experience that are recorded and shown publically.
 
 ### Project Technologies/Techniques
 
@@ -34,10 +34,11 @@
 
 * [User Stories](DesignDocuments/userStories.md)
 * [Tasks](DesignDocuments/tasks.md)
-* [Screen Design](DesignDocuments/Screens.md)
 * [Application Flow](DesignDocuments/applicationFlow.md)
-* [Database Design](DesignDocuments/databaseDiagram.png)
+* [Database Design](DesignDocuments/databaseDiagram.md)
 
-### [Project Plan](ProjectPlan.md)
+## [Project Plan](ProjectPlan.md)
 
-#### [TimeLog](TimeLog.md)
+## [TimeLog](TimeLog.md)
+
+
