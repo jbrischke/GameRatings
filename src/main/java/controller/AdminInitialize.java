@@ -24,10 +24,9 @@ public class AdminInitialize extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         AddGameDao addGameDao = new AddGameDao();
-        if (req.getParameter("submit").equals("viewAll")) {
-            req.setAttribute("games", addGameDao.getAllGames());
-        }
-        RequestDispatcher dispatcher = req.getRequestDispatcher("adminFunctions.jsp");
+        req.setAttribute("games", addGameDao.getAllGames());
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("admin.jsp");
         dispatcher.forward(req, resp);
     }
 }

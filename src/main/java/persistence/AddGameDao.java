@@ -37,12 +37,22 @@ public class AddGameDao {
         return id;
     }
 
-    public void delete(Game game) {
+    public Object delete(Game game) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         session.delete(game);
         transaction.commit();
         session.close();
+        return game;
+    }
+
+    public Object saveOrUpdate(Game game) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.saveOrUpdate(game);
+        transaction.commit();
+        session.close();
+        return game;
     }
 
 }
