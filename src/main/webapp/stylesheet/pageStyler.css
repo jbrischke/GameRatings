@@ -1,0 +1,27 @@
+body {
+    background-color: #806A6A;
+    padding: 2em;
+}
+
+.padding {
+    padding 20px;
+}
+
+h3 {
+    color: black;
+}
+
+input[type="text"], textarea {
+    background-color : #d1d1d1;
+}
+
+.column {
+    columns: 6 auto;
+    padding: 1em;
+}
+
+#descriptionCSS {
+    word-wrap: break-word;
+    width: 50px;
+}
+
