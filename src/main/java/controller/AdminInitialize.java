@@ -12,9 +12,9 @@ import java.io.IOException;
 
 /**
  * A simple servlet to welcome the user.
+ *
  * @author pwaite
  */
-
 @WebServlet(
         urlPatterns = {"/admininitalize"}
 )

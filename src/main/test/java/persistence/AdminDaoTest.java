@@ -11,10 +11,19 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 
+/**
+ * The type Admin dao test.
+ */
 class AdminDaoTest {
 
+    /**
+     * The Dao.
+     */
     AdminDao dao;
 
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
 
@@ -24,12 +33,18 @@ class AdminDaoTest {
         dao = new AdminDao();
     }
 
+    /**
+     * Gets all games.
+     */
     @Test
     void getAllGames() {
         List<Game> Games = dao.getAllGames();
         assertEquals(3, Games.size());
     }
 
+    /**
+     * Insert.
+     */
     @Test
     void insert() {
         Game newGame = new Game();
@@ -46,12 +61,18 @@ class AdminDaoTest {
         assertNotNull(insertedOrder.getDescription());
     }
 
+    /**
+     * Delete.
+     */
     @Test
     void delete() {
         dao.delete(dao.getById(1));
         assertNull(dao.getById(1));
     }
 
+    /**
+     * Save or update.
+     */
     @Test
     void saveOrUpdate() {
         String description = "test will pass";

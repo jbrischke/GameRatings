@@ -3,14 +3,19 @@ package controller;
 import entity.Game;
 import persistence.AdminDao;
 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.annotation.*;
+
 import java.io.IOException;
 
+/**
+ * The type Admin.
+ */
 @WebServlet(
         urlPatterns = {"/adminFunctions"}
 )
@@ -20,6 +25,7 @@ public class Admin extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         AdminDao adminDao = new AdminDao();
+
         if (req.getParameter("submit").equals("addGame")) {
             Game game = new Game();
             game.setGameURL(req.getParameter("gameURl"));
@@ -41,6 +47,7 @@ public class Admin extends HttpServlet {
             game.setId(Integer.parseInt(req.getParameter("updateID")));
             req.setAttribute("games", adminDao.saveOrUpdate(game));
             req.setAttribute("games", adminDao.getAllGames());
+
         }
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/admin.jsp");

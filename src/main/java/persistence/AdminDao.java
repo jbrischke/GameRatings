@@ -13,10 +13,21 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
+/**
+ * The type Admin dao.
+ */
 public class AdminDao {
     private final Logger logger = LogManager.getLogger(this.getClass());
+    /**
+     * The Session factory.
+     */
     SessionFactory sessionFactory = SessionFactoryProvider.getSessionFactory();
 
+    /**
+     * Gets all games.
+     *
+     * @return the all games
+     */
     public List<Game> getAllGames() {
         Session session = sessionFactory.openSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
@@ -28,6 +39,12 @@ public class AdminDao {
         return games;
     }
 
+    /**
+     * Insert int.
+     *
+     * @param game the game
+     * @return the int
+     */
     public int insert(Game game) {
         int id = 0;
         Session session = sessionFactory.openSession();
@@ -39,6 +56,12 @@ public class AdminDao {
         return id;
     }
 
+    /**
+     * Delete object.
+     *
+     * @param game the game
+     * @return the object
+     */
     public Object delete(Game game) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
@@ -49,6 +72,12 @@ public class AdminDao {
         return game;
     }
 
+    /**
+     * Save or update object.
+     *
+     * @param game the game
+     * @return the object
+     */
     public Object saveOrUpdate(Game game) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
@@ -59,6 +88,12 @@ public class AdminDao {
         return game;
     }
 
+    /**
+     * Gets by id.
+     *
+     * @param id the id
+     * @return the by id
+     */
     public Game getById(int id) {
         Session session = sessionFactory.openSession();
         Game game = session.get(Game.class, id);

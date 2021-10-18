@@ -5,7 +5,6 @@
 
 <html>
 <body>
-
 <div class="container">
     <form action="adminFunctions" class="form-inline">
         <div class="form-group">
@@ -14,6 +13,7 @@
         </div>
         <button type="submit" name="submit" value="addGame" class="btn btn-primary p-3">Insert Game</button>
     </form>
+
 
     <table class="table">
         <thead>
@@ -29,12 +29,10 @@
         <tbody>
                 <c:forEach var="game" items="${games}">
                     <tr>
-
                         <td><img src="${game.gameURL}" width="100" height="200" class="column"/></td>
                         <td>${game.id}</td>
                         <td>Name</td>
                         <td id="descriptionCSS">${game.description}</td>
-
                         <td>
                             <form action="adminFunctions" class="form-inline">
                                 <div class="form-group padding">
@@ -45,7 +43,6 @@
                                 <button type="submit" name="submit" value="update" class="btn btn-primary p-3 padding">Update Game</button>
                             </form>
                         </td>
-
                         <td>
                             <form action="adminFunctions" class="form-inline">
                                 <div class="form-group padding">
@@ -54,12 +51,10 @@
                                 <button type="submit" name="submit" value="deleteRecord" class="btn btn-primary padding">Delete Game</button>
                             </form>
                         </td>
-
                     </tr>
                 </c:forEach>
         </tbody>
     </table>
 </div>
-
 </body>
 </html>
