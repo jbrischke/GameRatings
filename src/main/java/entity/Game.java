@@ -19,6 +19,9 @@ public class Game {
     @Column(name = "gameURL")
     private String gameURL;
 
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "description")
     private String description;
 
@@ -58,6 +61,15 @@ public class Game {
         this.gameURL = gameURL;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
     /**
      * Gets description.
      *
@@ -81,6 +93,7 @@ public class Game {
         return "Game{" +
                 "id=" + id +
                 ", gameURL='" + gameURL + '\'' +
+                ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }

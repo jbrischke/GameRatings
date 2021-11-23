@@ -29,6 +29,7 @@ public class Admin extends HttpServlet {
         if (req.getParameter("submit").equals("addGame")) {
             Game game = new Game();
             game.setGameURL(req.getParameter("gameURl"));
+            game.setName(req.getParameter("gameName"));
             game.setDescription(req.getParameter("description"));
             req.setAttribute("games", adminDao.insert(game));
             req.setAttribute("games", adminDao.getAllGames());
@@ -43,6 +44,7 @@ public class Admin extends HttpServlet {
         if (req.getParameter("submit").equals("update")) {
             Game game = new Game();
             game.setGameURL(req.getParameter("updateURl"));
+            game.setName(req.getParameter("updateName"));
             game.setDescription(req.getParameter("updateDescription"));
             game.setId(Integer.parseInt(req.getParameter("updateID")));
             req.setAttribute("games", adminDao.saveOrUpdate(game));
