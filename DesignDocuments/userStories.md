@@ -2,7 +2,7 @@
 
 ### Sign up
 
-I want the ability to create an account and so that I can submit reports
+I want the ability to create an account and so that I can submit reports reports
 
 ### Sign In
 

@@ -9,5 +9,7 @@
 | 9/20  | Created the databases and some test sql data  |  1  |
 | 9/24  | Solved some of the file problems from the code I commandeered |  2  |
 | 10/12  | Worked on creating the java classes and html for the site  |  4  |
-| 9/16  | Created elements of crud on the admin page and added data structre to the database  |  5  |
-| 9/17  | Finished adding crud to my admin page and some of the visuals were changed for deleting and updating records.  |  4  |
+| 11/21  | Worked on adding models to the admin page for crud elements  |  6  |
+| 11/22  | finished working on crud buttons for the admin page and started working on the navbar  |  7  |
+| 11/23  | made changes to the index and home page along with starting to work on cognito  |  4  |
+| 11/24  | resubmitted checkpoint 1 2 and 3 along with putting finishing touches on cognito and deploying to aws  |  6  |

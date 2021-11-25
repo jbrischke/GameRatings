@@ -1,8 +1,12 @@
 # Tasks by Story
 
-### Sign up
+### Home page
+- [ ] displays a home page with a logon
+- [ ] displays user information, and a list of all available games if logged in
+- [ ] allows the games to be clickable
 
-- [ ] new user jsp
+### Sign up
+- [ ] new user cognito
 - [ ] add user controller (java class)
 - [ ] user entity (java class)
 - [ ] user table
@@ -10,17 +14,20 @@
 - [ ] unit test dao add user functionality
 - [ ] test round trip (front end to back end)
 
+### admin
+- [ ] admin controller (java class)
+- [ ] displays all games and information
+- [ ] allows full crud
+- [ ] gives option to view all reports for a specific game
 
-### Find Games
+### reports
+- [ ] new report cognito
+- [ ] add report controller (java class)
+- [ ] report entity (java class)
+- [ ] report table
+- [ ] report dao to add report to db (java class)
+- [ ] unit test dao add report functionality
+- [ ] ability to add reports
+- [ ] ability to read all reports
+- [ ] ability to view all reports
 
-- [ ] Reports Table
-- [ ] Games Table
-- [ ] search reports jsp
-- [ ] search reports controller (java class)
-- [ ] Game entity (java class)
-- [ ] Reports table
-- [ ] game to search for games by name 
-- [ ] unit test game searches (find by name)
-- [ ] test all results page (front end to back end)
-
-### Sign In

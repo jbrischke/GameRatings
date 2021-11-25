@@ -1,36 +1,35 @@
-create table reports
-(
-    reports_id  int auto_increment,
-    description varchar(200) null,
-    constraint reports_reports_id_uindex
-        unique (reports_id)
-);
-
-alter table reports
-    add primary key (reports_id);
-
 create table games
 (
-    game_id     int auto_increment,
-    gamepicture blob not null,
+    id          int auto_increment,
+    gameURL     varchar(255) null,
+    description varchar(255) null,
+    name        varchar(255) null,
     constraint games_game_id_uindex
-        unique (game_id),
-    constraint games_reports_reports_id_fk
-        foreign key (game_id) references reports (reports_id)
+        unique (id)
 );
 
 alter table games
-    add primary key (game_id);
+    add primary key (id);
+
+create table reports
+(
+    id          int auto_increment,
+    description varchar(200) null,
+    hoursPlayed int          null,
+    constraint reports_reports_id_uindex
+        unique (id),
+    constraint reports_games_id_fk
+        foreign key (id) references games (id)
+            on update cascade on delete cascade
+);
+
+alter table reports
+    add primary key (id);
 
 create table user
 (
-    user_id    int auto_increment,
-    createdate timestamp    null,
-    email      varchar(255) null,
-    firstname  varchar(244) null,
-    lastname   varchar(244) null,
-    updatedate timestamp    null,
-    username   varchar(255) null,
+    user_id  int auto_increment,
+    username varchar(255) null,
     constraint user_user_id_uindex
         unique (user_id)
 );
@@ -40,14 +39,13 @@ alter table user
 
 create table roles
 (
-    role_id    int auto_increment,
-    createdate timestamp    null,
-    name       varchar(255) null,
-    updatedate timestamp    null,
+    role_id int auto_increment,
+    name    varchar(255) null,
     constraint roles_role_id_uindex
         unique (role_id),
     constraint roles_user_user_id_fk
         foreign key (role_id) references user (user_id)
+            on update cascade on delete cascade
 );
 
 alter table roles

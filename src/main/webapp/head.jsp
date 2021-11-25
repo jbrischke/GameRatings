@@ -28,5 +28,4 @@
     <link rel="stylesheet" href="stylesheet/pageStyler.css">
     <script src="js/popupFunctions.js"></script>
 
-
 </head>

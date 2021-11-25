@@ -1,7 +1,16 @@
+body {
+    background-color: #D1BCBC;
+}
+
 * {box-sizing: border-box}
 
+#gamePicture {
+    height: 200px;
+    width: 50%;
+}
+
 #descriptionText {
-    word-wrap:break-word
+    word-wrap:break-word;
 }
 
 /* Set a style for all buttons */
@@ -99,4 +108,11 @@ hr {
     .cancelbtn, .deletebtn {
         width: 100%;
     }
+}
+
+img {
+    height: auto;
+    width: auto;
+    max-width: 100px;
+    max-height: 100px;
 }

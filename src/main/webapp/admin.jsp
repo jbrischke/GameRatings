@@ -1,11 +1,11 @@
 <html>
-<%@include file="Navbar.jsp"%>
-<%@include file="taglib.jsp"%>
-<c:set var="title" value="Search Results" />
 <%@include file="head.jsp"%>
+<%@include file="taglib.jsp"%>
+<%@include file="Navbar.jsp"%>
+<c:set var="title" value="Search Results" />
 <body>
     <table class="table">
-        <thead>
+        <thead class="thead-dark">
             <tr>
                 <th scope="col">Picture</th>
                 <th scope="col">ID</th>
@@ -42,8 +42,8 @@
         </thead>
         <tbody>
             <c:forEach var="game" items="${games}">
-                <tr>
-                    <td><img src="${game.gameURL}" width="=120" height="150"/></td>
+                <tr class="table-active">
+                    <td><img src="${game.gameURL}"/></td>
                     <td>${game.id}</td>
                     <td>${game.name}</td>
                     <td id="descriptionText">${game.description}</td>
@@ -91,7 +91,6 @@
                                 </div>
                             </form>
                         </div>
-
                     </td>
                 </tr>
             </c:forEach>

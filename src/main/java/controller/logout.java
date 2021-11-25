@@ -1,6 +1,6 @@
 package controller;
 
-import persistence.AdminDao;
+import com.mysql.cj.protocol.x.Notice;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,25 +8,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * initializes all records
+ * Resets the session
  *
  * @author Josh Brischke
  */
 @WebServlet(
-        urlPatterns = {"/admininitalize"}
+        urlPatterns = {"/logout"}
 )
 
-public class AdminInitialize extends HttpServlet {
+public class logout extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        AdminDao adminDao = new AdminDao();
-        req.setAttribute("games", adminDao.getAllGames());
-
-        RequestDispatcher dispatcher = req.getRequestDispatcher("admin.jsp");
+        HttpSession session = req.getSession();
+        session.invalidate();
+        RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
         dispatcher.forward(req, resp);
     }
 }
