@@ -2,6 +2,7 @@ package controller;
 
 import entity.Game;
 import persistence.AdminDao;
+import persistence.GenericDao;
 
 
 import javax.servlet.RequestDispatcher;
@@ -23,7 +24,6 @@ import java.io.IOException;
 public class Admin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         AdminDao adminDao = new AdminDao();
 
         if (req.getParameter("submit").equals("addGame")) {
