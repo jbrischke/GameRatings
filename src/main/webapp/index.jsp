@@ -13,7 +13,7 @@
     <c:when test="${empty sessionScope.user}">
         <main role="main" class="container">
             <h1 class="mt-5">RatingsAnonymous</h1>
-            <p class="lead">Login and you will beable to interact with any Game on record and submit reports for any selected Game</p>
+            <p class="lead">Login and you will be able to interact with any Game on record and submit reports for any selected Game</p>
             <p><a href="logIn" class="btn btn-danger" role="button">Log in</a></p>
         </main>
         <footer class="footer">

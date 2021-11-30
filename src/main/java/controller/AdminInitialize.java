@@ -1,6 +1,8 @@
 package controller;
 
-import persistence.AdminDao;
+import entity.Game;
+import entity.User;
+import persistence.GenericDao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,9 +24,10 @@ import java.io.IOException;
 public class AdminInitialize extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        AdminDao adminDao = new AdminDao();
-        req.setAttribute("games", adminDao.getAllGames());
+        GenericDao<Game> genericDao = new GenericDao<>(Game.class);
+        GenericDao<User> userGenericDao = new GenericDao<>(User.class);
+        req.setAttribute("games", genericDao.getAll());
+        req.setAttribute("users", userGenericDao.getAll());
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("admin.jsp");
         dispatcher.forward(req, resp);

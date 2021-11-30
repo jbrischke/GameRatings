@@ -1,16 +1,14 @@
 package controller;
 
 
-import auth.CognitoJWTParser;
-import auth.CognitoTokenHeader;
-import auth.Keys;
-import auth.TokenResponse;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import auth.*;
+import entity.User;
+import persistence.GenericDao;
 import util.PropertiesLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -176,8 +174,20 @@ public class Auth extends HttpServlet implements PropertiesLoader {
 
         logger.debug("here are all the available claims: " + jwt.getClaims());
 
-        // TODO decide what you want to do with the info!
-        // for now, I'm just returning username for display back to the browser
+        String name = jwt.getClaim("name").asString();
+        String emailVerified = jwt.getClaim("email_verified").asString();
+        logger.debug("msg1" + userName);
+        logger.debug("msg1" + name);
+        logger.debug("msg1" + emailVerified);
+        GenericDao<User> userGenericDao = new GenericDao<>(User.class);
+        List<User> users = userGenericDao.getAll();
+        User user = new User(name, emailVerified, userName);
+        logger.debug("msg1" + user);
+        user.setUserName(userName);
+        user.setName(name);
+        user.setEmail(emailVerified);
+        logger.debug("msg1" + user);
+        userGenericDao.insert(user);
 
         return userName;
     }

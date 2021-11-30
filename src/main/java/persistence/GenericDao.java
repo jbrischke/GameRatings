@@ -49,12 +49,13 @@ public class GenericDao<T> {
      *
      * @param entity entity to be deleted
      */
-    public void delete(T entity) {
+    public Object delete(T entity) {
         Session session = getSession();
         Transaction transaction = session.beginTransaction();
         session.delete(entity);
         transaction.commit();
         session.close();
+        return delete(entity);
     }
 
     /**
@@ -114,12 +115,13 @@ public class GenericDao<T> {
      * update entity
      * @param entity  Entity to be inserted or updated
      */
-    public void saveOrUpdate(T entity) {
+    public Object saveOrUpdate(T entity) {
         Session session = getSession();
         Transaction transaction = session.beginTransaction();
         session.saveOrUpdate(entity);
         transaction.commit();
         session.close();
+        return entity;
     }
 
     /**
