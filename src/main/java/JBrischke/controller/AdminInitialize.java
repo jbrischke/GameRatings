@@ -1,6 +1,6 @@
 package JBrischke.controller;
 
-import JBrischke.entity.*;
+import JBrischke.entity.Game;
 import JBrischke.entity.User;
 import JBrischke.persistence.GenericDao;
 
