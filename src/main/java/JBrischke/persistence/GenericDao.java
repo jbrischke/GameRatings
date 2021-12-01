@@ -1,11 +1,9 @@
-package persistence;
+package JBrischke.persistence;
 
-import entity.Game;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import persistence.SessionFactoryProvider;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;

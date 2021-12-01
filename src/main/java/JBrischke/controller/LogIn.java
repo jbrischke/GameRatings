@@ -1,4 +1,4 @@
-package controller;
+package JBrischke.controller;
 
 import util.PropertiesLoader;
 import org.apache.logging.log4j.LogManager;

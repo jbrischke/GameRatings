@@ -1,4 +1,4 @@
-package entity;
+package JBrischke.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -24,22 +24,6 @@ public class Game {
 
     @Column(name = "description")
     private String description;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    private User user;
-
-    public Game() {
-
-    }
-
-    public Game(User user, int id, String gameURL, String name, String description) {
-        this.user = user;
-        this.id = id;
-        this.gameURL = gameURL;
-        this.name = name;
-        this.description = description;
-    }
 
     /**
      * Gets id.
@@ -104,14 +88,6 @@ public class Game {
         this.description = description;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     @Override
     public String toString() {
         return "Game{" +
@@ -119,7 +95,6 @@ public class Game {
                 ", gameURL='" + gameURL + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", user=" + user +
                 '}';
     }
 }

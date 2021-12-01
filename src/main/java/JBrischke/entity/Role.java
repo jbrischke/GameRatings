@@ -1,4 +1,4 @@
-package entity;
+package JBrischke.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -19,9 +19,6 @@ public class Role {
     @Column(name = "username")
     private String userName;
 
-    @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    private User user;
 
     public Role(int roleId, String roleType, String userName) {
         this.roleId = roleId;
@@ -58,21 +55,12 @@ public class Role {
         this.userName = userName;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     @Override
     public String toString() {
         return "Role{" +
                 "roleId=" + roleId +
                 ", roleType='" + roleType + '\'' +
                 ", userName='" + userName + '\'' +
-                ", user=" + user +
                 '}';
     }
 }

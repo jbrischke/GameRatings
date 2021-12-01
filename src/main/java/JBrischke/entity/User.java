@@ -1,4 +1,4 @@
-package entity;
+package JBrischke.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -25,17 +25,8 @@ public class User {
     @Column(name = "username")
     private String userName;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private Set<Game> games = new HashSet<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private Set<Role> roles = new HashSet<>();
-
-    public User(int userId, String name, String email, String userName) {
-        this.userId = userId;
-        this.name = name;
-        this.email = email;
-        this.userName = userName;
+    public User() {
     }
 
     public User(String name, String email, String userName) {
@@ -76,22 +67,6 @@ public class User {
         this.userName = userName;
     }
 
-    public Set<Game> getGames() {
-        return games;
-    }
-
-    public void setGames(Set<Game> games) {
-        this.games = games;
-    }
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
-
     @Override
     public String toString() {
         return "User{" +
@@ -99,8 +74,6 @@ public class User {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", userName='" + userName + '\'' +
-                ", games=" + games +
-                ", roles=" + roles +
                 '}';
     }
 }

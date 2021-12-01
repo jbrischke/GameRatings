@@ -1,12 +1,11 @@
 package persistence;
 
-import entity.*;
+import JBrischke.entity.*;
 import testUtils.Database;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import persistence.GenericDao;
+import JBrischke.persistence.GenericDao;
 
-import java.awt.print.Book;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;

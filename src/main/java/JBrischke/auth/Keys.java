@@ -1,8 +1,7 @@
-package auth;
+package JBrischke.auth;
 
 import java.util.List;
 
-import auth.KeysItem;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Keys{

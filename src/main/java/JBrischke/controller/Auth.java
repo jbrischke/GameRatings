@@ -1,4 +1,4 @@
-package controller;
+package JBrischke.controller;
 
 
 import com.auth0.jwt.JWT;
@@ -6,13 +6,12 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import auth.*;
-import entity.User;
-import persistence.GenericDao;
+import JBrischke.auth.*;
 import util.PropertiesLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.commons.io.*;
+import util.PropertiesLoader;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -77,7 +76,7 @@ public class Auth extends HttpServlet implements PropertiesLoader {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String authCode = req.getParameter("code");
-        String userName = null;
+        ArrayList<String> userName = null;
 
         if (authCode == null) {
             //TODO forward to an error page or back to the login
@@ -132,7 +131,7 @@ public class Auth extends HttpServlet implements PropertiesLoader {
      * @return
      * @throws IOException
      */
-    private String validate(TokenResponse tokenResponse) throws IOException {
+    private ArrayList<String> validate(TokenResponse tokenResponse) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         CognitoTokenHeader tokenHeader = mapper.readValue(CognitoJWTParser.getHeader(tokenResponse.getIdToken()).toString(), CognitoTokenHeader.class);
 
@@ -169,27 +168,19 @@ public class Auth extends HttpServlet implements PropertiesLoader {
 
         // Verify the token
         DecodedJWT jwt = verifier.verify(tokenResponse.getIdToken());
-        String userName = jwt.getClaim("cognito:username").asString();
-        logger.debug("here's the username: " + userName);
+
+        ArrayList<String> userDisplay = new ArrayList<String>();
+        userDisplay.add(jwt.getClaim("cognito:username").asString());
+        //String userName = jwt.getClaim("cognito:username").asString();
+
+        logger.debug("here's the username: " + userDisplay);
 
         logger.debug("here are all the available claims: " + jwt.getClaims());
 
-        String name = jwt.getClaim("name").asString();
-        String emailVerified = jwt.getClaim("email_verified").asString();
-        logger.debug("msg1" + userName);
-        logger.debug("msg1" + name);
-        logger.debug("msg1" + emailVerified);
-        GenericDao<User> userGenericDao = new GenericDao<>(User.class);
-        List<User> users = userGenericDao.getAll();
-        User user = new User(name, emailVerified, userName);
-        logger.debug("msg1" + user);
-        user.setUserName(userName);
-        user.setName(name);
-        user.setEmail(emailVerified);
-        logger.debug("msg1" + user);
-        userGenericDao.insert(user);
+        // TODO decide what you want to do with the info!
+        // for now, I'm just returning username for display back to the browser
 
-        return userName;
+        return userDisplay;
     }
 
     /** Create the auth url and use it to build the request.
@@ -267,3 +258,4 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         }
     }
 }
+

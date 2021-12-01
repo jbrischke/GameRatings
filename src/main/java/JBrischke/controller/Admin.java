@@ -1,9 +1,9 @@
-package controller;
+package JBrischke.controller;
 
-import entity.Game;
-import entity.User;
-import entity.Report;
-import persistence.GenericDao;
+import JBrischke.entity.Game;
+import JBrischke.entity.User;
+import JBrischke.entity.Report;
+import JBrischke.persistence.GenericDao;
 
 
 import javax.servlet.RequestDispatcher;

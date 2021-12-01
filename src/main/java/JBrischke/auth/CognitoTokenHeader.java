@@ -1,4 +1,4 @@
-package auth;
+package JBrischke.auth;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

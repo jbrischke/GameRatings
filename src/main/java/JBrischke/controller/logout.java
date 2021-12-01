@@ -1,8 +1,8 @@
-package controller;
+package JBrischke.controller;
 
 import com.mysql.cj.protocol.x.Notice;
-import entity.User;
-import persistence.GenericDao;
+import JBrischke.entity.User;
+import JBrischke.persistence.GenericDao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,12 +27,6 @@ public class logout extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         /*
-        String userName = jwt.getClaim("cognito:username").asString();
-        String name = jwt.getClaim("name").asString();
-        String emailVerified = jwt.getClaim("email_verified").asString();
-        logger.debug("msg1" + userName);
-        logger.debug("msg1" + name);
-        logger.debug("msg1" + emailVerified);
         GenericDao<User> userGenericDao = new GenericDao<>(User.class);
         List<User> users = userGenericDao.getAll();
         User user = new User(name, emailVerified, userName);
