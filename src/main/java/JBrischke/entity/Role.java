@@ -16,19 +16,11 @@ public class Role {
     @Column(name = "type")
     private String roleType;
 
-    @Column(name = "username")
-    private String userName;
+    @OneToOne
+    @JoinColumn(name = "role_id", referencedColumnName = "role_id")
+    private User user;
 
-
-    public Role(int roleId, String roleType, String userName) {
-        this.roleId = roleId;
-        this.roleType = roleType;
-        this.userName = userName;
-    }
-
-    public Role(String roleType, String userName) {
-        this.roleType = roleType;
-        this.userName = userName;
+    public Role() {
     }
 
     public int getRoleId() {
@@ -47,12 +39,12 @@ public class Role {
         this.roleType = roleType;
     }
 
-    public String getUserName() {
-        return userName;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
@@ -60,7 +52,6 @@ public class Role {
         return "Role{" +
                 "roleId=" + roleId +
                 ", roleType='" + roleType + '\'' +
-                ", userName='" + userName + '\'' +
                 '}';
     }
 }

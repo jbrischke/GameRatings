@@ -179,15 +179,18 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         String userName = jwt.getClaim("cognito:username").asString();
         String name = jwt.getClaim("name").asString();
         String email = jwt.getClaim("email").asString();
+        int role_id = 1;
+
         GenericDao<User> userGenericDao = new GenericDao<>(User.class);
         List<User> users = userGenericDao.getAll();
-        User user = new User(name, email, userName);
-        logger.debug("msg1" + user);
+
+        User user = new User(name, email, userName, role_id);
         user.setUserName(userName);
         user.setName(name);
         user.setEmail(email);
-        logger.debug("msg2" + user);
+        user.setRole_id(role_id);
         userGenericDao.insert(user);
+
 
         return userName;
     }

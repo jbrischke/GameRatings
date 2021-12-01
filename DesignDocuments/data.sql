@@ -7,6 +7,7 @@ create table games
     constraint games_game_id_uindex
         unique (id)
 );
+select * from user a left outer join roles b on a.role_id = b.role_id;
 
 alter table games
     add primary key (id);
