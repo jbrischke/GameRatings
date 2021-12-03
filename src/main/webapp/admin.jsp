@@ -103,14 +103,18 @@
         <th scope="col">User Name</th>
         <th scope="col">Name</th>
         <th scope="col">Email Verified</th>
+        <th scope="col">Role ID</th>
+        <th scope="col">Type</th>
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="user" items="${users}">
+    <c:forEach var="user" items="${users}"><
         <tr class="table-active">
             <td>${user.userName}</td>
-            <td>${game.name}</td>
-            <td>${game.email}</td>
+            <td>${user.name}</td>
+            <td>${user.email}</td>
+            <td>${user.role_id}</td>
+            <td>${role.roleType}</td>
         </tr>
     </c:forEach>
     </tbody>

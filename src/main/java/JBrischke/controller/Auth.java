@@ -5,6 +5,7 @@ import JBrischke.auth.CognitoJWTParser;
 import JBrischke.auth.CognitoTokenHeader;
 import JBrischke.auth.Keys;
 import JBrischke.auth.TokenResponse;
+import JBrischke.entity.Role;
 import JBrischke.entity.User;
 import JBrischke.persistence.GenericDao;
 import com.auth0.jwt.JWT;
@@ -25,6 +26,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.lang.reflect.Array;
 import java.math.BigInteger;
 import java.net.URI;
 import java.net.URL;
@@ -182,15 +184,17 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         int role_id = 1;
 
         GenericDao<User> userGenericDao = new GenericDao<>(User.class);
-        List<User> users = userGenericDao.getAll();
+        Role role = new Role();
 
-        User user = new User(name, email, userName, role_id);
-        user.setUserName(userName);
-        user.setName(name);
-        user.setEmail(email);
-        user.setRole_id(role_id);
-        userGenericDao.insert(user);
 
+        if (userGenericDao.getByPropertyEqual("userName", userName).isEmpty()) {
+            User user = new User(name, email, userName, role_id);
+            user.setUserName(userName);
+            user.setName(name);
+            user.setEmail(email);
+            user.setRole_id(role_id);
+            userGenericDao.insert(user);
+        }
 
         return userName;
     }

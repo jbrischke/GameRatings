@@ -147,6 +147,8 @@ public class GenericDao<T> {
         return entities;
     }
 
+
+
     /**
      * Returns an open session from the SessionFactory
      * @return session

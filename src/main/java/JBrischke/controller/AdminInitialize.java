@@ -24,9 +24,9 @@ import java.io.IOException;
 public class AdminInitialize extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        GenericDao<Game> genericDao = new GenericDao<>(Game.class);
+        GenericDao<Game> gameGenericDao = new GenericDao<>(Game.class);
         GenericDao<User> userGenericDao = new GenericDao<>(User.class);
-        req.setAttribute("games", genericDao.getAll());
+        req.setAttribute("games", gameGenericDao.getAll());
         req.setAttribute("users", userGenericDao.getAll());
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("admin.jsp");

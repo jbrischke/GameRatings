@@ -3,6 +3,8 @@ package JBrischke.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity(name = "User")
 @Table(name = "user")
@@ -11,7 +13,7 @@ public class User {
     @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
-    private int userId;
+    private int user_id;
 
     @Column(name = "name")
     private String name;
@@ -25,9 +27,8 @@ public class User {
     @Column(name = "role_id")
     private int role_id;
 
-    @OneToOne
-    @JoinColumn(name="role_id")
-    private Role role;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private Set<Role> roles = new HashSet<>();
 
     public User() {
     }
@@ -36,15 +37,15 @@ public class User {
         this.name = name;
         this.email = email;
         this.userName = userName;
-        this.role_id = 1;
+        this.role_id = role_id;
     }
 
     public int getUserId() {
-        return userId;
+        return user_id;
     }
 
     public void setUserId(int userId) {
-        this.userId = userId;
+        this.user_id = userId;
     }
 
     public String getName() {
@@ -79,10 +80,25 @@ public class User {
         this.role_id = role_id;
     }
 
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public void addRole(Role role) {
+        roles.add( role );
+        role.setUser( this );
+    }
+
+
     @Override
     public String toString() {
         return "User{" +
-                "userId=" + userId +
+                "userId=" + user_id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", userName='" + userName + '\'' +
