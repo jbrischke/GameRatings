@@ -184,8 +184,6 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         int role_id = 1;
 
         GenericDao<User> userGenericDao = new GenericDao<>(User.class);
-        Role role = new Role();
-
 
         if (userGenericDao.getByPropertyEqual("userName", userName).isEmpty()) {
             User user = new User(name, email, userName, role_id);

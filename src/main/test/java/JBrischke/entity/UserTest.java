@@ -7,8 +7,7 @@ import testUtils.Database;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
 
@@ -17,17 +16,15 @@ class UserTest {
 
     @BeforeEach
     void setUp() {
-
-        testUtils.Database database = testUtils.Database.getInstance();
-        database.runSQL("cleandb.sql");
-
         dao = new GenericDao<>(User.class);
+        Database database = Database.getInstance();
+        database.runSQL("cleandb.sql");
     }
 
     @Test
-    void getAllGames() {
+    void getAllUsers() {
         List<User> users = dao.getAll();
-        assertEquals(1, users.size());
+        assertEquals(3, users.size());
     }
 
     @Test
@@ -42,9 +39,22 @@ class UserTest {
 
         int id = dao.insert(newUser);
         User insertedOrder = dao.getById(id);
-        assertEquals("mynameisblah", insertedOrder.getName());
+        assertEquals("fred", insertedOrder.getUserName());
     }
 
+    @Test
+    void delete() {
+        dao.delete(dao.getById(2));
 
+    }
 
+    @Test
+    void saveOrUpdate() {
+        String username = "fredy";
+        User userWillUpdate = dao.getById(1);
+        userWillUpdate.setUserName(username);
+        dao.saveOrUpdate(userWillUpdate);
+        User retrieveUser = dao.getById(1);
+        assertEquals(username, retrieveUser.getUserName());
+    }
 }

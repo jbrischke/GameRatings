@@ -1,8 +1,6 @@
 package JBrischke.controller;
 
-import JBrischke.entity.Game;
-import JBrischke.entity.User;
-import JBrischke.entity.Report;
+import JBrischke.entity.*;
 import JBrischke.persistence.GenericDao;
 
 
@@ -27,7 +25,7 @@ public class Admin extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         GenericDao<Game> gameGenericDao = new GenericDao<>(Game.class);
         GenericDao<User> userGenericDao = new GenericDao<>(User.class);
-        GenericDao<Report> reportGenericDao = new GenericDao<>(Report.class);
+
 
         if (req.getParameter("submit").equals("addGame")) {
             Game game = new Game();

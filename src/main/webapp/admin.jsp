@@ -114,9 +114,14 @@
             <td>${user.name}</td>
             <td>${user.email}</td>
             <td>${user.role_id}</td>
-            <td>${role.roleType}</td>
+            <td>
+                <c:forEach var="role" items="${roles}"><
+
+                </c:forEach>
+            </td>
         </tr>
     </c:forEach>
+
     </tbody>
 </table>
 </body>
