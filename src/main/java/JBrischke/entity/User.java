@@ -4,13 +4,15 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
+
 
 @Entity(name = "User")
 @Table(name = "user")
 public class User {
     @Id
-    @Column(name = "user_id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private int user_id;
@@ -24,28 +26,24 @@ public class User {
     @Column(name = "username")
     private String userName;
 
-    @Column(name = "role_id")
-    private int role_id;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Role> roles = new HashSet<>();
 
     public User() {
     }
 
-    public User(String name, String email, String userName, int role_id) {
+    public User(String name, String email, String userName) {
         this.name = name;
         this.email = email;
         this.userName = userName;
-        this.role_id = role_id;
     }
 
-    public int getUserId() {
+    public int getUser_id() {
         return user_id;
     }
 
-    public void setUserId(int userId) {
-        this.user_id = userId;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public String getName() {
@@ -72,15 +70,6 @@ public class User {
         this.userName = userName;
     }
 
-    public int getRole_id() {
-        return role_id;
-    }
-
-    public void setRole_id(int role_id) {
-        this.role_id = role_id;
-    }
-
-
     public Set<Role> getRoles() {
         return roles;
     }
@@ -90,15 +79,14 @@ public class User {
     }
 
     public void addRole(Role role) {
-        roles.add( role );
-        role.setUser( this );
+        roles.add(role);
+        role.setUser(this);
     }
-
 
     @Override
     public String toString() {
         return "User{" +
-                "userId=" + user_id +
+                "user_id=" + user_id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", userName='" + userName + '\'' +

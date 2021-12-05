@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import testUtils.Database;
 
+import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,9 +18,9 @@ class UserTest {
 
     @BeforeEach
     void setUp() {
-        dao = new GenericDao<>(User.class);
         Database database = Database.getInstance();
         database.runSQL("cleandb.sql");
+        dao = new GenericDao<>(User.class);
     }
 
     @Test
@@ -30,9 +32,8 @@ class UserTest {
     @Test
     void insert() {
         User newUser = new User();
-        newUser.setUserId(500);
+        newUser.setUser_id(500);
         newUser.setUserName("fred");
-        newUser.setRole_id(1);
         newUser.setEmail("brischke1@gmail.com");
         newUser.setName("mynameisblah");
         dao.insert(newUser);
@@ -42,10 +43,27 @@ class UserTest {
         assertEquals("fred", insertedOrder.getUserName());
     }
 
+    /**
+     * Verify successful insert of a user
+     */
     @Test
-    void delete() {
-        dao.delete(dao.getById(2));
+    void insertWithOrderSuccess() {
 
+        User newUser = new User("Susan", "email@gmail.com", "fflintstone");
+
+        String roleName = "user";
+        Role role = new Role(roleName, newUser.getUserName(), newUser);
+
+        newUser.addRole(role);
+
+        int id = dao.insert(newUser);
+
+        assertNotEquals(0,id);
+        User insertedUser = dao.getById(id);
+        assertEquals("Susan", insertedUser.getName());
+        assertEquals("email@gmail.com", insertedUser.getEmail());
+        assertEquals("fflintstone", insertedUser.getUserName());
+        assertEquals(1, insertedUser.getRoles().size());
     }
 
     @Test
@@ -56,5 +74,11 @@ class UserTest {
         dao.saveOrUpdate(userWillUpdate);
         User retrieveUser = dao.getById(1);
         assertEquals(username, retrieveUser.getUserName());
+    }
+
+    @Test
+    void getByPropertyEqualSuccess() {
+        List<User> users = dao.getByPropertyEqual("userName", "Josh");
+        assertEquals(1, users.size());
     }
 }

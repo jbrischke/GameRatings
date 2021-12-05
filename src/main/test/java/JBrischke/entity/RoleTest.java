@@ -19,4 +19,15 @@ class RoleTest {
         database.runSQL("cleandb.sql");
     }
 
+    @Test
+    void getAllRoles() {
+        List<Role> roles = dao.getAll();
+        assertEquals(3, roles.size());
+    }
+
+    @Test
+    void getByPropertyEqualSuccess() {
+        List<Role> roles = dao.getByPropertyEqual("roleName", "user");
+        assertEquals(3, roles.size());
+    }
 }

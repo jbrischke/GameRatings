@@ -103,8 +103,7 @@
         <th scope="col">User Name</th>
         <th scope="col">Name</th>
         <th scope="col">Email Verified</th>
-        <th scope="col">Role ID</th>
-        <th scope="col">Type</th>
+        <th scope="col">roleType</th>
     </tr>
     </thead>
     <tbody>
@@ -113,12 +112,9 @@
             <td>${user.userName}</td>
             <td>${user.name}</td>
             <td>${user.email}</td>
-            <td>${user.role_id}</td>
-            <td>
                 <c:forEach var="role" items="${roles}"><
-
+                    <td>${role.roleName}</td>
                 </c:forEach>
-            </td>
         </tr>
     </c:forEach>
 

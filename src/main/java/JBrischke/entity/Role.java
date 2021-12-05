@@ -3,31 +3,36 @@ package JBrischke.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Objects;
 
 
 @Entity(name = "Role")
-@Table(name = "roles")
+@Table(name = "role")
 public class Role {
     @Id
-    @Column(name = "role_id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private int role_id;
 
-    @Column(name = "type")
-    private String roleType;
+    @Column(name = "role_name")
+    private String roleName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "roles", nullable = false)
+    @Column(name = "username")
+    private String userName;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id",
+            foreignKey = @ForeignKey(name = "role_user_user_id_fk")
+    )
     private User user;
 
     public Role() {
     }
 
-    public Role(String roleType, User user) {
-        this.roleType = roleType;
+    public Role(String roleName, String userName, User user) {
+        this.roleName = roleName;
+        this.userName = userName;
         this.user = user;
     }
 
@@ -39,12 +44,20 @@ public class Role {
         this.role_id = role_id;
     }
 
-    public String getRoleType() {
-        return roleType;
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setRoleType(String roleType) {
-        this.roleType = roleType;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public User getUser() {
@@ -59,7 +72,8 @@ public class Role {
     public String toString() {
         return "Role{" +
                 "role_id=" + role_id +
-                ", roleType='" + roleType + '\'' +
+                ", roleName='" + roleName + '\'' +
+                ", userName='" + userName + '\'' +
                 ", user=" + user +
                 '}';
     }
