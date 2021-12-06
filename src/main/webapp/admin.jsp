@@ -103,7 +103,8 @@
         <th scope="col">User Name</th>
         <th scope="col">Name</th>
         <th scope="col">Email Verified</th>
-        <th scope="col">roleType</th>
+        <th scope="col">roleName</th>
+        <th scope="col">Change Role</th>
     </tr>
     </thead>
     <tbody>
@@ -112,12 +113,19 @@
             <td>${user.userName}</td>
             <td>${user.name}</td>
             <td>${user.email}</td>
-                <c:forEach var="role" items="${roles}"><
-                    <td>${role.roleName}</td>
-                </c:forEach>
+            <c:forEach var="role" items="${user.roles}"><
+                <td>${role.roleName}</td>
+            </c:forEach>
+            <td ALIGN="center">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </td>
         </tr>
     </c:forEach>
-
     </tbody>
 </table>
 </body>

@@ -36,6 +36,11 @@ public class Role {
         this.user = user;
     }
 
+    public Role(String roleName, User user) {
+        this.roleName = roleName;
+        this.user = user;
+    }
+
     public int getRole_id() {
         return role_id;
     }
@@ -72,6 +77,7 @@ public class Role {
     public String toString() {
         return "Role{" +
                 "role_id=" + role_id +
+                ", roleName='" + roleName + '\'' +
                 ", roleName='" + roleName + '\'' +
                 ", userName='" + userName + '\'' +
                 ", user=" + user +

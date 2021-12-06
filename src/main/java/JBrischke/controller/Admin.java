@@ -26,6 +26,8 @@ public class Admin extends HttpServlet {
         GenericDao<Game> gameGenericDao = new GenericDao<>(Game.class);
         GenericDao<User> userGenericDao = new GenericDao<>(User.class);
 
+        req.setAttribute("games", gameGenericDao.getAll());
+        req.setAttribute("users", userGenericDao.getAll());
 
         if (req.getParameter("submit").equals("addGame")) {
             Game game = new Game();
@@ -33,16 +35,12 @@ public class Admin extends HttpServlet {
             game.setName(req.getParameter("gameName"));
             game.setDescription(req.getParameter("description"));
             req.setAttribute("games", gameGenericDao.insert(game));
-            req.setAttribute("games", gameGenericDao.getAll());
-            req.setAttribute("users", userGenericDao.getAll());
         }
         if (req.getParameter("submit").equals("deleteRecord")) {
             Game game = new Game();
             int id = Integer.parseInt(req.getParameter("deleteID"));
             game.setId(id);
             req.setAttribute("games", gameGenericDao.delete(game));
-            req.setAttribute("games", gameGenericDao.getAll());
-            req.setAttribute("users", userGenericDao.getAll());
         }
         if (req.getParameter("submit").equals("update")) {
             Game game = new Game();
@@ -51,8 +49,9 @@ public class Admin extends HttpServlet {
             game.setDescription(req.getParameter("updateDescription"));
             game.setId(Integer.parseInt(req.getParameter("updateID")));
             req.setAttribute("games", gameGenericDao.saveOrUpdate(game));
-            req.setAttribute("games", gameGenericDao.getAll());
-            req.setAttribute("users", userGenericDao.getAll());
+        }
+        if (req.getParameter("submit").equals("userUpdate")) {
+            String bb = "diffs";
         }
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/admin.jsp");

@@ -26,28 +26,11 @@ import java.util.*;
 public class AdminInitialize extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        Logger logger = LogManager.getLogger(this.getClass());
-
         GenericDao<Game> gameGenericDao = new GenericDao<>(Game.class);
         GenericDao<User> userGenericDao = new GenericDao<>(User.class);
-        GenericDao<Role> roleGenericDao = new GenericDao<>(Role.class);
-
-        List<User> users = userGenericDao.getAll();
-
-        for(User user : users) {
-            List<Role> roles = roleGenericDao.getByPropertyEqual("userName", user.getUserName());
-            for(Role roleItem : roles) {
-                user.addRole(roleItem);
-                logger.debug("admin load output inside role loop" + roleItem.getRole_id());
-            }
-            logger.debug("admin load output inside loop" + roles);
-        }
-
-        logger.debug("admin load output" + users);
 
         req.setAttribute("games", gameGenericDao.getAll());
-        req.setAttribute("users", users);
+        req.setAttribute("users", userGenericDao.getAll());
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("admin.jsp");
         dispatcher.forward(req, resp);

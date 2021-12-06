@@ -8,6 +8,7 @@ import testUtils.Database;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -48,7 +49,6 @@ class UserTest {
      */
     @Test
     void insertWithOrderSuccess() {
-
         User newUser = new User("Susan", "email@gmail.com", "fflintstone");
 
         String roleName = "user";
@@ -68,12 +68,19 @@ class UserTest {
 
     @Test
     void saveOrUpdate() {
-        String username = "fredy";
+
+        String role_name = "admin";
         User userWillUpdate = dao.getById(1);
-        userWillUpdate.setUserName(username);
+        Set<Role> role = userWillUpdate.getRoles();
+        for(Role roleTypes : role) {
+            roleTypes.setRoleName(role_name);
+        }
+
         dao.saveOrUpdate(userWillUpdate);
-        User retrieveUser = dao.getById(1);
-        assertEquals(username, retrieveUser.getUserName());
+        Set<Role> roleCheck = userWillUpdate.getRoles();
+        for(Role roleTypes : roleCheck) {
+            assertEquals(role_name, roleTypes.getRoleName());
+        }
     }
 
     @Test

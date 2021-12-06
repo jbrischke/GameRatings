@@ -183,8 +183,6 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         String email = jwt.getClaim("email").asString();
 
         GenericDao<User> userGenericDao = new GenericDao<>(User.class);
-        GenericDao<Role> roleGenericDao = new GenericDao<>(Role.class);
-
 
         if (userGenericDao.getByPropertyEqual("userName", userName).isEmpty()) {
             User user = new User(name, email, userName);
