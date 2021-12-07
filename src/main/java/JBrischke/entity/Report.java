@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Table(name = "report")
 public class Report {
     @Id
-    @Column(name = "category_id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private int report_id;

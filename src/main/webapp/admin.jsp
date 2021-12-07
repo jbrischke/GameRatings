@@ -32,7 +32,7 @@
                         </div>
                         <div class="clearfix">
                             <button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn">Cancel</button>
-                            <button type="submit" name="submit" value="addGame">Add Game</button>
+                            <button type="submit" name="submit" class="addbtn" value="addGame">Add Game</button>
                         </div>
                     </div>
                 </form>
@@ -69,7 +69,7 @@
                             <div class="clearfix">
                                 <input type="hidden" class="form-control padding" id="updateID" name="updateID" value="${game.id}" aria-describedby="URL">
                                 <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                                <button type="submit" name="submit" value="update">Update Game</button>
+                                <button type="submit" name="submit" class="updatebtn" value="update">Update Game</button>
                             </div>
                         </div>
                     </form>
@@ -113,17 +113,9 @@
             <td>${user.userName}</td>
             <td>${user.name}</td>
             <td>${user.email}</td>
-            <c:forEach var="role" items="${user.roles}"><
+            <c:forEach var="role" items="${user.roles}">
                 <td>${role.roleName}</td>
             </c:forEach>
-            <td ALIGN="center">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </td>
         </tr>
     </c:forEach>
     </tbody>
