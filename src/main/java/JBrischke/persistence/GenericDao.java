@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import JBrischke.entity.*;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -47,6 +46,7 @@ public class GenericDao<T> {
      * Deletes the entity.
      *
      * @param entity entity to be deleted
+     * @return
      */
     public Object delete(T entity) {
         Session session = getSession();
@@ -54,7 +54,7 @@ public class GenericDao<T> {
         session.delete(entity);
         transaction.commit();
         session.close();
-        return delete(entity);
+        return null;
     }
 
     /**

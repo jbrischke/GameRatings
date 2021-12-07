@@ -1,6 +1,9 @@
 package JBrischke.entity;
 
 import JBrischke.persistence.GenericDao;
+import JBrischke.persistence.SessionFactoryProvider;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.List;
@@ -25,4 +28,21 @@ class GameTest {
         List<Game> games = dao.getAll();
         assertEquals(3, games.size());
     }
+
+    @Test
+    void deleteSuccess() {
+        dao.delete(dao.getById(3));
+        assertNull(dao.getById(3));
+    }
+
+    /**
+     * Returns an open session from the SessionFactory
+     * @return session
+     */
+    private Session getSession() {
+        return SessionFactoryProvider.getSessionFactory().openSession();
+
+    }
+
+
 }

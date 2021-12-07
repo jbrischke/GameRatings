@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class PlanetDaoTest {
+class PriceDaoTest {
     @Test
     public void getPlanetSuccess() throws Exception {
         PriceDao dao = new PriceDao();

@@ -108,7 +108,7 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="user" items="${users}"><
+    <c:forEach var="user" items="${users}">
         <tr class="table-active">
             <td>${user.userName}</td>
             <td>${user.name}</td>

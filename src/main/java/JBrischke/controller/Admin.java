@@ -53,6 +53,11 @@ public class Admin extends HttpServlet {
             req.setAttribute("games", gameGenericDao.getAll());
             req.setAttribute("users", userGenericDao.getAll());
         }
+        if (req.getParameter("submit").equals("updateuser")) {
+            User user = new User();
+
+        }
+
         RequestDispatcher dispatcher = req.getRequestDispatcher("/admin.jsp");
         dispatcher.forward(req, resp);
     }

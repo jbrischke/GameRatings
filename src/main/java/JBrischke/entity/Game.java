@@ -8,7 +8,7 @@ import javax.persistence.*;
  * The type Game.
  */
 @Entity(name = "Game")
-@Table(name = "games")
+@Table(name = "game")
 public class Game {
 
     @Id
