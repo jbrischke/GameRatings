@@ -26,7 +26,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.lang.reflect.Array;
 import java.math.BigInteger;
 import java.net.URI;
 import java.net.URL;
@@ -83,7 +82,7 @@ public class Auth extends HttpServlet implements PropertiesLoader {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String authCode = req.getParameter("code");
-        String userName = null;
+        User userName = null;
 
         if (authCode == null) {
             //TODO forward to an error page or back to the login
@@ -138,7 +137,7 @@ public class Auth extends HttpServlet implements PropertiesLoader {
      * @return
      * @throws IOException
      */
-    private String validate(TokenResponse tokenResponse) throws IOException {
+    private User validate(TokenResponse tokenResponse) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         CognitoTokenHeader tokenHeader = mapper.readValue(CognitoJWTParser.getHeader(tokenResponse.getIdToken()).toString(), CognitoTokenHeader.class);
 
@@ -176,8 +175,6 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         // Verify the token
         DecodedJWT jwt = verifier.verify(tokenResponse.getIdToken());
 
-        logger.debug("here are all the available claims: " + jwt.getClaims());
-
         String userName = jwt.getClaim("cognito:username").asString();
         String name = jwt.getClaim("name").asString();
         String email = jwt.getClaim("email").asString();
@@ -187,14 +184,14 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         if (userGenericDao.getByPropertyEqual("userName", userName).isEmpty()) {
             User user = new User(name, email, userName);
             user.setUserName(userName);
-            user.setName(name);
-            user.setEmail(email);
+            user.setName(jwt.getClaim("name").asString());
+            user.setEmail(jwt.getClaim("email").asString());
             Role role = new Role("user", userName, user);
             user.addRole(role);
             userGenericDao.insert(user);
         }
 
-        return userName;
+        return userGenericDao.getByPropertyEqualsUnique("userName", userName);
     }
 
     /** Create the auth url and use it to build the request.

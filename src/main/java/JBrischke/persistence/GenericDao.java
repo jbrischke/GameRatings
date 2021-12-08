@@ -42,6 +42,17 @@ public class GenericDao<T> {
         return entity;
     }
 
+    public T getByPropertyEqualsUnique(String propertyName, String value) {
+        Session session = getSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<T> query = builder.createQuery(type);
+        Root<T> root = query.from(type);
+        query.select(root).where(builder.equal(root.get(propertyName), value));
+        T entity = session.createQuery(query).uniqueResult();
+        session.close();
+        return entity;
+    }
+
     /**
      * Deletes the entity.
      *

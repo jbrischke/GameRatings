@@ -5,7 +5,8 @@
 
 <c:choose>
     <c:when test="${empty sessionScope.user}">
-        <c:set var="user" value="${userName}" scope="session" />
+        <c:set var="user" value="${userName.userName}" scope="session" />
+        <c:set var="userRole" value="${userName.roles}" scope="session" />
     </c:when>
 </c:choose>
 

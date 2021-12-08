@@ -74,8 +74,6 @@
                         </div>
                     </form>
                 </div>
-
-
                 <button onclick="AreYouSure(${game.id})" id="btn02"><i class="material-icons">delete</i></button>
                 <div id="id02" class="modal">
                     <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">×</span>
@@ -115,6 +113,21 @@
             <td>${user.email}</td>
             <c:forEach var="role" items="${user.roles}">
                 <td>${role.roleName}</td>
+            <form action="adminFunctions">
+                <div class="form-group">
+                    <td>
+                        <label>
+                            <select class="form-select form-select-lg mb-3" name="newRole">
+                                <option selected>Select a role</option>
+                                <option value="admin" name="userRole">Admin</option>
+                                <option value="user" name="userRole">User</option>
+                            </select>
+                        </label>
+                        <input type="hidden" id="userID" value="${user.user_id}" name="userID">
+                        <button type="submit" name="submit" value="updateUser">Update User</button>
+                    </td>
+                </div>
+            </form>
             </c:forEach>
         </tr>
     </c:forEach>
