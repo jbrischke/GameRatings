@@ -5,6 +5,7 @@ import JBrischke.auth.CognitoJWTParser;
 import JBrischke.auth.CognitoTokenHeader;
 import JBrischke.auth.Keys;
 import JBrischke.auth.TokenResponse;
+import JBrischke.entity.Game;
 import JBrischke.entity.Role;
 import JBrischke.entity.User;
 import JBrischke.persistence.GenericDao;
@@ -83,6 +84,8 @@ public class Auth extends HttpServlet implements PropertiesLoader {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String authCode = req.getParameter("code");
         User userName = null;
+        GenericDao<Game> gameGenericDao = new GenericDao<>(Game.class);
+        req.setAttribute("games", gameGenericDao.getAll());
 
         if (authCode == null) {
             //TODO forward to an error page or back to the login
@@ -102,7 +105,6 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         }
         RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
         dispatcher.forward(req, resp);
-
     }
 
     /**
@@ -175,12 +177,15 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         // Verify the token
         DecodedJWT jwt = verifier.verify(tokenResponse.getIdToken());
 
+        //information returned from cognito on sign in
         String userName = jwt.getClaim("cognito:username").asString();
         String name = jwt.getClaim("name").asString();
         String email = jwt.getClaim("email").asString();
 
+        //loads a generic dao to add users
         GenericDao<User> userGenericDao = new GenericDao<>(User.class);
 
+        //insert a new user if one does not exist
         if (userGenericDao.getByPropertyEqual("userName", userName).isEmpty()) {
             User user = new User(name, email, userName);
             user.setUserName(userName);
@@ -191,6 +196,7 @@ public class Auth extends HttpServlet implements PropertiesLoader {
             userGenericDao.insert(user);
         }
 
+        // returns the entity of the user logging in including role information
         return userGenericDao.getByPropertyEqualsUnique("userName", userName);
     }
 

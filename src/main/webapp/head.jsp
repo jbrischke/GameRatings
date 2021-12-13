@@ -28,4 +28,6 @@
     <link rel="stylesheet" href="stylesheet/pageStyler.css">
     <script src="js/popupFunctions.js"></script>
 
+    <script src="js/validator.js"></script>
+    <script src="js/datepicker.js"></script>
 </head>

@@ -1,8 +1,8 @@
-<html>
 <%@include file="head.jsp"%>
 <%@include file="taglib.jsp"%>
 <%@include file="Navbar.jsp"%>
-<c:set var="title" value="Search Results" />
+
+<html>
 <body>
 <table class="table">
     <thead class="thead-dark">
@@ -43,10 +43,10 @@
     <tbody>
     <c:forEach var="game" items="${games}">
         <tr class="table-active">
-            <td><img src="${game.gameURL}"/></td>
+            <td><img class="rounded float-left" src="${game.gameURL}"/></td>
             <td>${game.id}</td>
             <td>${game.name}</td>
-            <td id="descriptionText">${game.description}</td>
+            <td id="adminGameDescription">${game.description}</td>
             <td>
                 <button onclick="EditGame('${game.id}', '${game.gameURL}', '${game.name}', '${game.description}')" id="btn01"><i class="material-icons">edit</i></button>
                 <div id="id01" class="modal">
@@ -81,10 +81,10 @@
                         <div class="container">
                             <h1>Delete Account</h1>
                             <p id="delquestion">Are you sure you want to delete id </p>
-                            <div class="clearfix">
+                            <div class="center">
                                 <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-                                <input type="hidden" class="form-control padding" id="deleteID" value="${game.id}" name="deleteID" aria-describedby="ID">
-                                <button type="submit" name="submit" value="deleteRecord">delete</button>
+                                <input type="hidden" class="form-control" id="deleteID" value="${game.id}" name="deleteID" aria-describedby="ID">
+                                <button type="submit" class="deletebtn" name="submit" value="deleteRecord">delete</button>
                             </div>
                         </div>
                     </form>
@@ -118,9 +118,8 @@
                     <td>
                         <label>
                             <select class="form-select form-select-lg mb-3" name="newRole">
-                                <option selected>Select a role</option>
                                 <option value="admin" name="userRole">Admin</option>
-                                <option value="user" name="userRole">User</option>
+                                <option selected value="user" name="userRole">User</option>
                             </select>
                         </label>
                         <input type="hidden" id="userID" value="${user.user_id}" name="userID">

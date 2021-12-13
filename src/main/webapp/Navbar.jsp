@@ -4,7 +4,7 @@
             <div class="navbar-header">
             </div>
             <ul class="nav navbar-nav justify-content-center">
-                <li><a class="navbar-brand" href="index.jsp">Home</a></li>
+                <li><a class="navbar-brand" href="GoingHome">Home</a></li>
                 <c:forEach var="role" items="${userRole}">
                     <c:if test="${role.roleName=='admin'}">
                         <li><a class="navbar-brand" href="admininitalize">Admin</a></li>

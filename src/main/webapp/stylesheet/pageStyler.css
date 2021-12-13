@@ -2,26 +2,22 @@ body {
     background-color: #D1BCBC;
 }
 
-* {box-sizing: border-box}
-
-#gamePicture {
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 200px;
-    width: 50%;
-}
-
-#descriptionText {
-    word-wrap:break-word;
 }
 
 /* Set a style for all buttons */
 button {
-    background-color: #7C7474;
+    background-color: #348595;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 40%;
+    width: 20%;
     opacity: 0.9;
 }
 
@@ -33,6 +29,7 @@ button:hover {
 .cancelbtn, .deletebtn, .updatebtn, .addbtn {
     float: left;
     width: 45%;
+    text-align: center;
 }
 
 .cancelbtn {
@@ -66,10 +63,11 @@ button:hover {
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
+    background-color: #847E7E;
     margin: 8% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 90%; /* Could be more or less, depending on screen size */
+    height: 50%;
 }
 
 /* Style the horizontal ruler */
@@ -109,8 +107,86 @@ hr {
 }
 
 img {
-    height: auto;
-    width: auto;
-    max-width: 100px;
-    max-height: 100px;
+    object-fit: cover;
+    align-items: center;
+    width:  130px;
+    height:auto;
+}
+
+input.btImg {
+    width:  100px;
+    height: 100px;
+    object-fit: cover;
+    align-items: center;
+    padding: 10px 10px 10px 10px;
+}
+
+#leftbox {
+    float:left;
+    background: #847E7E;
+    width:25%;
+    height:600px;
+}
+#middlebox{
+    float:left;
+    background: #847E7E;
+    width:50%;
+    height:600px;
+}
+#rightbox{
+    float:right;
+    background: #847E7E;
+    width:25%;
+    height:600px;
+    align-items: center;
+}
+
+#addReportHoursPlayed {
+    width: 40%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#addReportOpinion {
+    width: 40%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#gameDescription {
+    padding: 15px;
+    max-width: 600px;
+    word-wrap: break-word;
+    font-size: 18px;
+    color: black;
+}
+
+#gameInfoID {
+    padding: 8px;
+    text-align: left;
+    float: left;
+    font-size: 40px;
+}
+#gameName {
+    padding: 8px;
+    text-align: left;
+    font-size: 40px;
+}
+
+#gameURL {
+    float: left;
+}
+
+#adminGameDescription {
+    padding: 8px;
+    max-width:80px;
+    word-wrap:break-word;
+    font-size: 18px;
+    color: black;
+}
+
+#modelHeaderGameDisplay {
+    background: #847E7E;
 }

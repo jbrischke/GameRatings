@@ -2,6 +2,8 @@ package JBrischke.controller;
 
 import JBrischke.entity.*;
 import JBrischke.persistence.GenericDao;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,19 +20,17 @@ import java.util.*;
  * @author Josh Brischke
  */
 @WebServlet(
-        urlPatterns = {"/admininitalize"}
+        urlPatterns = {"/GoingHome"}
 )
 
-public class AdminInitialize extends HttpServlet {
+public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         GenericDao<Game> gameGenericDao = new GenericDao<>(Game.class);
-        GenericDao<User> userGenericDao = new GenericDao<>(User.class);
 
         req.setAttribute("games", gameGenericDao.getAll());
-        req.setAttribute("users", userGenericDao.getAll());
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("admin.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
         dispatcher.forward(req, resp);
     }
 }
