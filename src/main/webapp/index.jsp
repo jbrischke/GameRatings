@@ -33,8 +33,10 @@
 
             <c:forEach var="game" items="${games}">
                 <input type="image" onclick="ReportGame('${game.id}', '${game.gameURL}', '${game.name}', '${game.description}')" src="${game.gameURL}" class="btImg" alt="">
+
                 <div id="id04" class="modal">
                     <span onclick="document.getElementById('id04').style.display='none'" class="close" title="Close Modal">×</span>
+
                     <form class="modal-content">
 
                         <h1 id="modelHeaderGameDisplay">View Information - Add Report</h1>
@@ -54,10 +56,25 @@
                                 </tr>
                             </table>
                             <p id="gameDescription"></p>
+
+                            <table class="center">
+                                <tr>
+                                    <td class="apiInformation">Cheapest Price: 17,49$</td>
+                                </tr>
+                                <tr>
+                                    <td class="apiInformation">Developer: Mojang</td>
+                                </tr>
+                                <tr>
+                                    <td class="apiInformation">Name: Minecraft</td>
+                                </tr>
+                                <tr>
+                                    <td class="apiInformation">Seller: google.com</td>
+                                </tr>
+                            </table>
                         </div>
 
                         <div id = "middlebox">
-                            <table class="table">
+                            <table class="center">
                                 <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">#</th>

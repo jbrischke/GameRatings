@@ -9,6 +9,11 @@ body {
     height: 200px;
 }
 
+.apiInformation {
+    text-align: left;
+    font-size: 40px;
+}
+
 /* Set a style for all buttons */
 button {
     background-color: #348595;
