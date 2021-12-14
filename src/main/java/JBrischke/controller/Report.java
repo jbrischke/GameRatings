@@ -14,25 +14,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * initializes all records
- *
- * @author Josh Brischke
- */
+
 @WebServlet(
-        urlPatterns = {"/GoingHome"}
+        urlPatterns = {"/Reports"}
 )
 
-public class HomeServlet extends HttpServlet {
+public class Report extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         GenericDao<Game> gameGenericDao = new GenericDao<>(Game.class);
+        Game game = new Game();
 
-        req.setAttribute("games", gameGenericDao.getAll());
+        int id = Integer.parseInt(req.getParameter("gameID"));
+        //logger.debug("id being passed" + id);
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
+        String gameName = req.getParameter("gameName");
+        String name = "minecraft";
+
+        //logger.debug("reports passed game name " + gameName);
+
+        PriceDao dao = new PriceDao();
+        //req.setAttribute("price", dao.getPrice(name));
+        //logger.debug("api returned information" + dao.getPrice(name));
+
+        game.setId(id);
+        req.setAttribute("games", gameGenericDao.getById(game.getId()));
+        //logger.debug("report info" + gameGenericDao.getById(game.getId()));
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("report.jsp");
         dispatcher.forward(req, resp);
     }
 }

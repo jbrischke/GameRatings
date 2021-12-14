@@ -1,11 +1,3 @@
-function ReportGame(game_id, game_url , game_name, game_description) {
-    document.getElementById("gameInfoID").innerText = "ID: " + game_id;
-    document.getElementById("gameURL").src = game_url;
-    document.getElementById("gameName").innerText = game_name;
-    document.getElementById("gameDescription").innerText = game_description;
-    document.getElementById('id04').style.display='block';
-}
-
 function AddGame() {
     document.getElementById('id03').style.display='block';
 }

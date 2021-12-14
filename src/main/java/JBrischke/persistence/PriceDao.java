@@ -22,7 +22,7 @@ public class PriceDao implements util.PropertiesLoader {
     String KEY_HEADER;
     String KEY_VALUE;
 
-    Price getPrice(String name) {
+    public Price getPrice(String name) {
         ClientConfig config = new ClientConfig();
         Client client = ClientBuilder.newClient(config);
         WebTarget target = client.target("");
