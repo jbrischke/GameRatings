@@ -14,15 +14,37 @@ import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * The type Price dao.
+ */
 public class PriceDao implements util.PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * The Properties.
+     */
     Properties properties;
+    /**
+     * The Url path.
+     */
     String URL_PATH;
+    /**
+     * The Key header.
+     */
     String KEY_HEADER;
+    /**
+     * The Key value.
+     */
     String KEY_VALUE;
 
+    /**
+     * Gets price.
+     *
+     * @param name the name
+     * @return the price
+     */
     public Price getPrice(String name) {
+        //Creates a client request that returns a price entity that is displayed on the view report page
         ClientConfig config = new ClientConfig();
         Client client = ClientBuilder.newClient(config);
         WebTarget target = client.target("");

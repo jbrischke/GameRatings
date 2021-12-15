@@ -16,6 +16,9 @@ import javax.servlet.annotation.*;
 
 import java.io.IOException;
 
+/**
+ * The type View report.
+ */
 @WebServlet(
         urlPatterns = {"/Reports"}
 )
@@ -26,7 +29,7 @@ public class ViewReport extends HttpServlet {
         GenericDao<Game> gameGenericDao = new GenericDao<>(Game.class);
         Logger logger = LogManager.getLogger(this.getClass());
 
-        //returns a single game object
+        //returns a single game object passed in from the page
         req.setAttribute("games", gameGenericDao.getById(Integer.parseInt(req.getParameter("gameID"))));
 
         /*

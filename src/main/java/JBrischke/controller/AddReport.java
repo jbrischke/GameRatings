@@ -17,6 +17,9 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.Set;
 
+/**
+ * The type Add report.
+ */
 @WebServlet(
         urlPatterns = {"/AddReport"}
 )
@@ -29,17 +32,22 @@ public class AddReport extends HttpServlet {
         Logger logger = LogManager.getLogger(this.getClass());
 
         if (req.getParameter("submit").equals("Report")) {
+            //grabs an id from a hidden input field and sets it in the game entity
             Game game = new Game();
             int id = Integer.parseInt(req.getParameter("inReportID"));
             game.setId(id);
 
+            //entered values be added to the reports object set
             String reportDescription = req.getParameter("addReportOpinion");
             int hoursPlayed = Integer.parseInt(req.getParameter("addReportHoursPlayed"));
 
+            //creates a report entity with the entered information and adds it to the set object in the game entity
             Report report = new Report(reportDescription, hoursPlayed);
             game.addReport(report);
             reportGenericDao.insert(report);
+
             /*
+            //does an api pull and returns and sets a price object
             String gameName = req.getParameter("gameName");
             logger.debug("inside the add report part" + gameName);
             PriceDao priceDao = new PriceDao();
