@@ -32,16 +32,13 @@ class UserTest {
 
     @Test
     void insert() {
-        User newUser = new User();
-        newUser.setUser_id(500);
-        newUser.setUserName("fred");
-        newUser.setEmail("brischke1@gmail.com");
-        newUser.setName("mynameisblah");
-        dao.insert(newUser);
+        User newUser = new User("fred", "brischke1@gmail.com", "mynameisblah");
+        Role role = new Role("user", "brischke1@gmail.com", newUser);
+        newUser.addRole(role);
 
         int id = dao.insert(newUser);
         User insertedOrder = dao.getById(id);
-        assertEquals("fred", insertedOrder.getUserName());
+        assertEquals("mynameisblah", insertedOrder.getUserName());
     }
 
     /**
@@ -68,7 +65,6 @@ class UserTest {
 
     @Test
     void saveOrUpdate() {
-
         String role_name = "admin";
         User userWillUpdate = dao.getById(1);
         Set<Role> role = userWillUpdate.getRoles();

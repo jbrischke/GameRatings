@@ -45,23 +45,49 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 
+/**
+ * The type Auth.
+ */
 @WebServlet(
         urlPatterns = {"/auth"}
 )
-// TODO if something goes wrong it this process, route to an error page. Currently, errors are only caught and logged.
-/**
- * Inspired by: https://stackoverflow.com/questions/52144721/how-to-get-access-token-using-client-credentials-using-java-code
- */
 
 public class Auth extends HttpServlet implements PropertiesLoader {
+    /**
+     * The Properties.
+     */
     Properties properties;
+    /**
+     * The Client id.
+     */
     String CLIENT_ID;
+    /**
+     * The Client secret.
+     */
     String CLIENT_SECRET;
+    /**
+     * The Oauth url.
+     */
     String OAUTH_URL;
+    /**
+     * The Login url.
+     */
     String LOGIN_URL;
+    /**
+     * The Redirect url.
+     */
     String REDIRECT_URL;
+    /**
+     * The Region.
+     */
     String REGION;
+    /**
+     * The Pool id.
+     */
     String POOL_ID;
+    /**
+     * The Jwks.
+     */
     Keys jwks;
 
     private final Logger logger = LogManager.getLogger(this.getClass());
@@ -88,7 +114,8 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         req.setAttribute("games", gameGenericDao.getAll());
 
         if (authCode == null) {
-            //TODO forward to an error page or back to the login
+            String url = "/logIn";
+            resp.sendRedirect(url);
         } else {
             HttpRequest authRequest = buildAuthRequest(authCode);
             try {
@@ -97,10 +124,12 @@ public class Auth extends HttpServlet implements PropertiesLoader {
                 req.setAttribute("userName", userName);
             } catch (IOException e) {
                 logger.error("Error getting or validating the token: " + e.getMessage(), e);
-                //TODO forward to an error page
+                String url = "/error.jsp";
+                resp.sendRedirect(url);
             } catch (InterruptedException e) {
                 logger.error("Error getting token from Cognito oauth url " + e.getMessage(), e);
-                //TODO forward to an error page
+                String url = "/error.jsp";
+                resp.sendRedirect(url);
             }
         }
         RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
@@ -147,12 +176,10 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         String keyId = tokenHeader.getKid();
         String alg = tokenHeader.getAlg();
 
-        // todo pick proper key from the two - it just so happens that the first one works for my case
         // Use Key's N and E
         BigInteger modulus = new BigInteger(1, org.apache.commons.codec.binary.Base64.decodeBase64(jwks.getKeys().get(0).getN()));
         BigInteger exponent = new BigInteger(1, org.apache.commons.codec.binary.Base64.decodeBase64(jwks.getKeys().get(0).getE()));
 
-        // TODO the following is "happy path", what if the exceptions are caught?
         // Create a public key
         PublicKey publicKey = null;
         try {

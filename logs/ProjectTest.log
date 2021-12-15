@@ -1,0 +1,17 @@
+[DEBUG] 2021-12-15 12:31:40.041 [main] GenericDao - Searching for order with userName = Josh
+[DEBUG] 2021-12-15 12:32:13.256 [main] GenericDao - Searching for order with userName = Josh
+[DEBUG] 2021-12-15 12:33:33.437 [main] GenericDao - Searching for order with roleName = user
+[DEBUG] 2021-12-15 12:34:27.109 [main] GenericDao - Searching for order with roleName = user
+[DEBUG] 2021-12-15 12:35:13.495 [main] GenericDao - Searching for order with roleName = user
+[DEBUG] 2021-12-15 12:36:44.067 [main] GenericDao - Searching for order with roleName = user
+[DEBUG] 2021-12-15 12:38:33.115 [main] GenericDao - Searching for order with roleName = user
+[DEBUG] 2021-12-15 12:41:30.598 [main] GenericDao - Searching for order with roleName = user
+[DEBUG] 2021-12-15 12:42:35.921 [main] GenericDao - Searching for order with userName = Josh
+[DEBUG] 2021-12-15 12:42:36.348 [main] GenericDao - Searching for order with roleName = user
+[DEBUG] 2021-12-15 12:42:36.629 [main] GenericDao - Searching for order with description = Sierra
+[DEBUG] 2021-12-15 12:45:40.456 [main] GenericDao - Searching for order with description = entry1
+[DEBUG] 2021-12-15 12:46:06.346 [main] GenericDao - Searching for order with userName = Josh
+[DEBUG] 2021-12-15 12:46:06.775 [main] GenericDao - Searching for order with description = entry1
+[DEBUG] 2021-12-15 12:46:06.924 [main] GenericDao - Searching for order with roleName = user
+[DEBUG] 2021-12-15 12:46:07.258 [main] GenericDao - Searching for order with description = Sierra
+[DEBUG] 2021-12-15 12:46:35.386 [main] GenericDao - Searching for order with description = Sierra

@@ -32,6 +32,13 @@ public class Game {
     public Game() {
     }
 
+    public Game(String gameURL, String name, String apiName, String description) {
+        this.gameURL = gameURL;
+        this.name = name;
+        this.apiName = apiName;
+        this.description = description;
+    }
+
     public int getId() {
         return id;
     }
