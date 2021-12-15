@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.annotation.*;
 
 import java.io.IOException;
-import java.util.Set;
 
 @WebServlet(
         urlPatterns = {"/Reports"}
@@ -27,12 +26,11 @@ public class ViewReport extends HttpServlet {
         GenericDao<Game> gameGenericDao = new GenericDao<>(Game.class);
         Logger logger = LogManager.getLogger(this.getClass());
 
-        Game game = new Game();
-        int id = Integer.parseInt(req.getParameter("gameID"));
-        game.setId(id);
-        req.setAttribute("games", gameGenericDao.getById(game.getId()));
+        //returns a single game object
+        req.setAttribute("games", gameGenericDao.getById(Integer.parseInt(req.getParameter("gameID"))));
 
         /*
+        // creates a price object and returns an entity of the price api
         String gameName = req.getParameter("gameName");
         PriceDao priceDao = new PriceDao();
         req.setAttribute("price", priceDao.getPrice(gameName));

@@ -5,33 +5,20 @@
     <body>
 
         <div id = "leftbox">
-            <table width="100%">
-                <tr>
-                    <td id="gameName">${games.name}</td>
-                    <td rowspan="2"><img id="gameURL" src="${games.gameURL}" alt=""></td>
-                </tr>
+            <div id="wrapperDiv">
+                <div id="gameName" style="width:50%;padding:50px;float:left">${games.name}</div>
+                <div id="div2" style="width:50%;padding:50px;float:right"><img id="gameURL" src="${games.gameURL}" alt=""></div>
+            </div>
 
-            </table>
 
             <p id="gameDescription">${games.description}</p>
 
-            <table class="center">
-                <tr>
-                    <td class="apiInformation">Cheapest Price: 17.99$ ${price.currentLowestPrice}</td>
-                </tr>
-                <tr>
-                    <td class="apiInformation">Currency: USD ${price.currency}</td>
-                </tr>
-                <tr>
-                    <td class="apiInformation">Developer: Mojang ${price.developer}</td>
-                </tr>
-                <tr>
-                    <td class="apiInformation">Name: Minecraft ${price.name}</td>
-                </tr>
-                <tr>
-                    <td class="apiInformation">Release Date: 5/20/1994 ${price.releaseDate}</td>
-                </tr>
-            </table>
+            <p class="apiInformation">Cheapest Price: 17.22$</p>
+            <p class="apiInformation">Currency: USD ${price.currency}</p>
+            <p class="apiInformation">Developer: Mojang ${price.developer}</p>
+            <p class="apiInformation">Name: Minecraft ${price.name}</p>
+            <p class="apiInformation">Release Date: 17/22</p>
+
         </div>
 
         <div id="middlebox">
@@ -64,6 +51,5 @@
                 <button type="submit" name="submit" class="btn btn-primary" value="Report">Add Report</button>
             </form>
         </div>
-
     </body>
 </html>

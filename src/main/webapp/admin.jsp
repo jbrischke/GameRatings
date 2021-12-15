@@ -9,7 +9,7 @@
     <tr>
         <th scope="col">Picture</th>
         <th scope="col">ID</th>
-        <th scope="col">Name</th>
+        <th scope="col">Game Name</th>
         <th scope="col">API Name</th>
         <th scope="col">Description</th>
         <th scope="col">
@@ -24,8 +24,8 @@
                             <input type="text" class="form-control" id="gameURl" name="gameURl" aria-describedby="URL" placeholder="Enter URL">
                         </div>
                         <div class="form-group">
-                            <label for="gameName">Name</label>
-                            <input type="text" class="form-control" id="gameName" name="gameName" aria-describedby="Name" placeholder="Enter Name">
+                            <label for="actualGameName">Game Name</label>
+                            <input type="text" class="form-control" id="actualGameName" name="gameName" aria-describedby="Name" placeholder="Enter Name">
                         </div>
                         <div class="form-group">
                             <label for="apiName">API Name</label>

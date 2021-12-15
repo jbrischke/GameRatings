@@ -34,10 +34,10 @@
             <h1 class="mt-5">Click a picture to view reports and submit reports</h1>
 
                 <c:forEach var="game" items="${games}">
-                    <form action="Reports">
+                    <form action="Reports" style="display:inline">
                         <input type="hidden" name="gameID" value="${game.id}">
                         <input type="hidden" name="gameName" value="${game.name}">
-                        <input type="image" src="${game.gameURL}" class="btImg" alt="">
+                        <input type="image" id="gameURL" src="${game.gameURL}" class="btImg" alt="">
                     </form>
                 </c:forEach>
 

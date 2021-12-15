@@ -25,6 +25,7 @@ public class Admin extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         GenericDao<Game> gameGenericDao = new GenericDao<>(Game.class);
         GenericDao<User> userGenericDao = new GenericDao<>(User.class);
+        Logger logger = LogManager.getLogger(this.getClass());
 
         if (req.getParameter("submit").equals("addGame")) {
             Game game = new Game();
@@ -48,7 +49,7 @@ public class Admin extends HttpServlet {
             Game game = new Game();
             game.setGameURL(req.getParameter("updateURl"));
             game.setName(req.getParameter("updateName"));
-            game.setApiName(req.getParameter("apiName"));
+            game.setApiName(req.getParameter("updateAPIName"));
             game.setDescription(req.getParameter("updateDescription"));
             game.setId(Integer.parseInt(req.getParameter("updateID")));
             req.setAttribute("games", gameGenericDao.saveOrUpdate(game));
