@@ -13,11 +13,11 @@
 
             <p id="gameDescription">${games.description}</p>
 
-            <p class="apiInformation">Cheapest Price: 17.22$</p>
-            <p class="apiInformation">Currency: USD ${price.currency}</p>
-            <p class="apiInformation">Developer: Mojang ${price.developer}</p>
-            <p class="apiInformation">Name: Minecraft ${price.name}</p>
-            <p class="apiInformation">Release Date: 17/22</p>
+            <p class="apiInformation">Cheapest Price: ${price.currentLowestPrice}</p>
+            <p class="apiInformation">Currency: ${price.currency}</p>
+            <p class="apiInformation">Developer: ${price.developer}</p>
+            <p class="apiInformation">Name: ${price.name}</p>
+            <p class="apiInformation">Release Date: ${price.releaseDate}</p>
 
         </div>
 

@@ -3,10 +3,9 @@ package JBrischke.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
-
 
 /**
  * The type User.
@@ -20,12 +19,15 @@ public class User {
     @GenericGenerator(name = "native", strategy = "native")
     private int user_id;
 
+    @NotNull
     @Column(name = "name")
     private String name;
 
+    @NotNull
     @Column(name = "email")
     private String email;
 
+    @NotNull
     @Column(name = "username")
     private String userName;
 

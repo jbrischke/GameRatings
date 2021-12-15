@@ -3,8 +3,7 @@ package JBrischke.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.Objects;
-
+import javax.validation.constraints.*;
 
 /**
  * The type Role.
@@ -18,9 +17,11 @@ public class Role {
     @GenericGenerator(name = "native", strategy = "native")
     private int role_id;
 
+    @NotNull
     @Column(name = "role_name")
     private String roleName;
 
+    @NotNull
     @Column(name = "username")
     private String userName;
 

@@ -3,6 +3,7 @@ package JBrischke.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,15 +18,19 @@ public class Game {
     @GenericGenerator(name = "native", strategy = "native")
     private int id;
 
+    @NotNull
     @Column(name = "gameURL")
     private String gameURL;
 
+    @NotNull
     @Column(name = "name")
     private String name;
 
+    @NotNull
     @Column(name = "apiName")
     private String apiName;
 
+    @NotNull
     @Column(name = "description")
     private String description;
 

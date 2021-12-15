@@ -32,13 +32,13 @@ public class ViewReport extends HttpServlet {
         //returns a single game object passed in from the page
         req.setAttribute("games", gameGenericDao.getById(Integer.parseInt(req.getParameter("gameID"))));
 
-        /*
+
         // creates a price object and returns an entity of the price api
-        String gameName = req.getParameter("gameName");
+        String gameName = req.getParameter("gameAPI");
         PriceDao priceDao = new PriceDao();
         req.setAttribute("price", priceDao.getPrice(gameName));
         logger.debug("this is the price of minecraft " + priceDao.getPrice(gameName));
-        */
+
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/report.jsp");
         dispatcher.forward(req, resp);

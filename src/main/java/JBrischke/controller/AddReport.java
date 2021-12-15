@@ -46,14 +46,15 @@ public class AddReport extends HttpServlet {
             game.addReport(report);
             reportGenericDao.insert(report);
 
-            /*
+
             //does an api pull and returns and sets a price object
-            String gameName = req.getParameter("gameName");
+            String gameName = req.getParameter("gameAPI");
             logger.debug("inside the add report part" + gameName);
             PriceDao priceDao = new PriceDao();
             req.setAttribute("price", priceDao.getPrice(gameName));
             logger.debug("this is the price of minecraft " + priceDao.getPrice(gameName));
-            */
+
+
         }
 
         req.setAttribute("games", gameGenericDao.getById(Integer.parseInt(req.getParameter("inReportID"))));

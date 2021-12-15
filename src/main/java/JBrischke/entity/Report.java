@@ -1,6 +1,6 @@
 package JBrischke.entity;
 
-
+import javax.validation.constraints.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -17,9 +17,12 @@ public class Report {
     @GenericGenerator(name = "native", strategy = "native")
     private int report_id;
 
+    @NotNull
     @Column(name = "description")
     private String description;
 
+    @NotNull
+    @Min(1)
     @Column(name = "hoursPlayed")
     private int hoursPlayed;
 

@@ -4,8 +4,9 @@ import JBrischke.persistence.GenericDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import testUtils.Database;
-
 import java.util.List;
+
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,12 +25,12 @@ class GameTest {
      */
     List<Game> games;
 
-
     /**
      * Sets up.
      */
     @BeforeEach
     void setUp() {
+
         Database database = Database.getInstance();
         database.runSQL("cleandb.sql");
 
