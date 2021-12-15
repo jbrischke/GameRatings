@@ -10,6 +10,7 @@
         <th scope="col">Picture</th>
         <th scope="col">ID</th>
         <th scope="col">Name</th>
+        <th scope="col">API Name</th>
         <th scope="col">Description</th>
         <th scope="col">
             <button onclick="AddGame()" id="btn03"><i class="material-icons">add</i></button>
@@ -25,6 +26,10 @@
                         <div class="form-group">
                             <label for="gameName">Name</label>
                             <input type="text" class="form-control" id="gameName" name="gameName" aria-describedby="Name" placeholder="Enter Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="apiName">API Name</label>
+                            <input type="text" class="form-control" id="apiName" name="apiName" aria-describedby="Name" placeholder="Enter the api name">
                         </div>
                         <div class="form-group">
                             <label for="description">Add Description</label>
@@ -46,9 +51,10 @@
             <td><img class="rounded float-left" src="${game.gameURL}"/></td>
             <td>${game.id}</td>
             <td>${game.name}</td>
+            <td>${game.apiName}</td>
             <td id="adminGameDescription">${game.description}</td>
             <td>
-                <button onclick="EditGame('${game.id}', '${game.gameURL}', '${game.name}', '${game.description}')" id="btn01"><i class="material-icons">edit</i></button>
+                <button onclick="EditGame('${game.id}', '${game.gameURL}', '${game.name}', '${game.apiName}', '${game.description}')" id="btn01"><i class="material-icons">edit</i></button>
                 <div id="id01" class="modal">
                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
                     <form class="modal-content" action="adminFunctions">
@@ -61,6 +67,10 @@
                             <div class="form-group">
                                 <label for="updateName">Game Name</label>
                                 <input type="text" class="form-control" id="updateName" name="updateName" aria-describedby="Name" placeholder="Enter Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="updateAPIName">Api Name</label>
+                                <input type="text" class="form-control" id="updateAPIName" name="updateAPIName" aria-describedby="Name" placeholder="Enter Name">
                             </div>
                             <div class="form-group">
                                 <label for="updateDescription">Game Description</label>

@@ -23,6 +23,28 @@ public class Report {
     @Column(name = "hoursPlayed")
     private int hoursPlayed;
 
+    @ManyToOne
+    @JoinColumn(name = "game_id",
+            foreignKey = @ForeignKey(name = "report_game_game_id_fk")
+    )
+    private Game game;
+
+    public Report() {
+    }
+
+    public Report(String description, int hoursPlayed) {
+        this.description = description;
+        this.hoursPlayed = hoursPlayed;
+    }
+
+    public int getReport_id() {
+        return report_id;
+    }
+
+    public void setReport_id(int report_id) {
+        this.report_id = report_id;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -39,6 +61,13 @@ public class Report {
         this.hoursPlayed = hoursPlayed;
     }
 
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
 
     @Override
     public String toString() {
@@ -46,6 +75,7 @@ public class Report {
                 "report_id=" + report_id +
                 ", description='" + description + '\'' +
                 ", hoursPlayed=" + hoursPlayed +
+                ", game=" + game +
                 '}';
     }
 }

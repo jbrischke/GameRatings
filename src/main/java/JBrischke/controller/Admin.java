@@ -16,9 +16,6 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.Set;
 
-/**
- * The type Admin.
- */
 @WebServlet(
         urlPatterns = {"/adminFunctions"}
 )
@@ -33,6 +30,7 @@ public class Admin extends HttpServlet {
             Game game = new Game();
             game.setGameURL(req.getParameter("gameURl"));
             game.setName(req.getParameter("gameName"));
+            game.setApiName(req.getParameter("apiName"));
             game.setDescription(req.getParameter("description"));
             req.setAttribute("games", gameGenericDao.insert(game));
             req.setAttribute("games", gameGenericDao.getAll());
@@ -50,6 +48,7 @@ public class Admin extends HttpServlet {
             Game game = new Game();
             game.setGameURL(req.getParameter("updateURl"));
             game.setName(req.getParameter("updateName"));
+            game.setApiName(req.getParameter("apiName"));
             game.setDescription(req.getParameter("updateDescription"));
             game.setId(Integer.parseInt(req.getParameter("updateID")));
             req.setAttribute("games", gameGenericDao.saveOrUpdate(game));
@@ -68,8 +67,6 @@ public class Admin extends HttpServlet {
             req.setAttribute("games", gameGenericDao.getAll());
             req.setAttribute("users", userGenericDao.getAll());
         }
-
-
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/admin.jsp");
         dispatcher.forward(req, resp);

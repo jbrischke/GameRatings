@@ -3,14 +3,12 @@ package JBrischke.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
-/**
- * The type Game.
- */
 @Entity(name = "Game")
 @Table(name = "game")
 public class Game {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
@@ -22,41 +20,30 @@ public class Game {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "apiName")
+    private String apiName;
+
     @Column(name = "description")
     private String description;
 
-    /**
-     * Gets id.
-     *
-     * @return the id
-     */
+    @OneToMany(mappedBy = "game", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<Report> reports = new HashSet<>();
+
+    public Game() {
+    }
+
     public int getId() {
         return id;
     }
 
-    /**
-     * Sets id.
-     *
-     * @param id the id
-     */
     public void setId(int id) {
         this.id = id;
     }
 
-    /**
-     * Gets game url.
-     *
-     * @return the game url
-     */
     public String getGameURL() {
         return gameURL;
     }
 
-    /**
-     * Sets game url.
-     *
-     * @param gameURL the game url
-     */
     public void setGameURL(String gameURL) {
         this.gameURL = gameURL;
     }
@@ -69,23 +56,33 @@ public class Game {
         this.name = name;
     }
 
+    public String getApiName() {
+        return apiName;
+    }
 
-    /**
-     * Gets description.
-     *
-     * @return the description
-     */
+    public void setApiName(String apiName) {
+        this.apiName = apiName;
+    }
+
     public String getDescription() {
         return description;
     }
 
-    /**
-     * Sets description.
-     *
-     * @param description the description
-     */
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<Report> getReports() {
+        return reports;
+    }
+
+    public void setReports(Set<Report> reports) {
+        this.reports = reports;
+    }
+
+    public void addReport(Report report) {
+        reports.add(report);
+        report.setGame(this);
     }
 
     @Override
@@ -94,7 +91,9 @@ public class Game {
                 "id=" + id +
                 ", gameURL='" + gameURL + '\'' +
                 ", name='" + name + '\'' +
+                ", apiName='" + apiName + '\'' +
                 ", description='" + description + '\'' +
+                ", reports=" + reports +
                 '}';
     }
 }

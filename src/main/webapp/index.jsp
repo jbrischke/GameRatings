@@ -33,13 +33,13 @@
             <h2 class=".text-dark">Thank you for logging in <c:out value="${sessionScope.user}" /></h2>
             <h1 class="mt-5">Click a picture to view reports and submit reports</h1>
 
-            <form action="Reports">
                 <c:forEach var="game" items="${games}">
-                    <input type="hidden" id="gameID" name="gameID" value="${game.id}">
-                    <input type="hidden" id="gameName" name="gameName" value="${game.name}">
-                    <input type="image" name="submit" src="${game.gameURL}" class="btImg" value="viewReport" alt="">
+                    <form action="Reports">
+                        <input type="hidden" name="gameID" value="${game.id}">
+                        <input type="hidden" name="gameName" value="${game.name}">
+                        <input type="image" src="${game.gameURL}" class="btImg" alt="">
+                    </form>
                 </c:forEach>
-            </form>
 
         </main>
     </c:otherwise>

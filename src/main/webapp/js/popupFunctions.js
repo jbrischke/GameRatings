@@ -2,11 +2,12 @@ function AddGame() {
     document.getElementById('id03').style.display='block';
 }
 
-function EditGame(game_id, game_url , game_name, game_description) {
+function EditGame(game_id, game_url , game_name, game_api, game_description) {
     document.getElementById("updateID").value = game_id;
     document.getElementById("editGameID").innerText = "Edit Game ID: " + game_id;
     document.getElementById("updateURl").value = game_url;
     document.getElementById("updateName").value = game_name;
+    document.getElementById("updateAPIName").value = game_api;
     document.getElementById("updateDescription").innerText = game_description;
     document.getElementById("id01").style.display='block';
 }

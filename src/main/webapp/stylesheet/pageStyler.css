@@ -6,12 +6,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
+    height: 150px;
+    padding: 30px;
 }
 
 .apiInformation {
     text-align: left;
-    font-size: 40px;
+    font-size: 20px;
 }
 
 /* Set a style for all buttons */
@@ -72,7 +73,7 @@ button:hover {
     margin: 8% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 90%; /* Could be more or less, depending on screen size */
-    height: 50%;
+    height: 60%;
 }
 
 /* Style the horizontal ruler */
@@ -128,19 +129,17 @@ input.btImg {
 
 #leftbox {
     float:left;
-    background: #847E7E;
     width:25%;
     height:600px;
 }
 #middlebox{
     float:left;
-    background: #847E7E;
     width:50%;
     height:600px;
+    padding: 20px;
 }
 #rightbox{
     float:right;
-    background: #847E7E;
     width:25%;
     height:600px;
     align-items: center;
@@ -149,38 +148,31 @@ input.btImg {
 #addReportHoursPlayed {
     width: 40%;
     display: block;
-    margin-right: auto;
-    margin-left: auto;
 }
 
 #addReportOpinion {
     width: 40%;
     display: block;
-    margin-right: auto;
-    margin-left: auto;
 }
 
 #gameDescription {
-    padding: 15px;
+    padding: 30px;
     max-width: 600px;
     word-wrap: break-word;
-    font-size: 18px;
+    font-size: 30px;
+    color: black;
+    text-align: center;
+}
+
+#gameName {
+    padding: 20px;
+    text-align: left;
+    font-size: 40px;
     color: black;
 }
 
-#gameInfoID {
-    padding: 8px;
-    text-align: left;
-    float: left;
-    font-size: 40px;
-}
-#gameName {
-    padding: 8px;
-    text-align: left;
-    font-size: 40px;
-}
-
 #gameURL {
+    padding: 20px;
     float: left;
 }
 
@@ -195,3 +187,4 @@ input.btImg {
 #modelHeaderGameDisplay {
     background: #847E7E;
 }
+
