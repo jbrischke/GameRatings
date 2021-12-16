@@ -48,6 +48,7 @@
                     <textarea class="form-control" id="addReportOpinion"  name="addReportOpinion"></textarea>
                     <input type="hidden" id="inReportID" name="inReportID" value="${games.id}">
                     <input type="hidden" name="gameName" value="${games.name}">
+                    <input type="hidden" name="apiName" value="${games.apiName}">
                 <button type="submit" name="submit" class="btn btn-primary" value="Report">Add Report</button>
             </form>
         </div>

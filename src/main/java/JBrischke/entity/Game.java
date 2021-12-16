@@ -26,7 +26,6 @@ public class Game {
     @Column(name = "name")
     private String name;
 
-    @NotNull
     @Column(name = "apiName")
     private String apiName;
 
